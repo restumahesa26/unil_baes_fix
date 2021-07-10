@@ -27,7 +27,8 @@
                 @csrf
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="jumlah_orang">Jumlah Orang @if ($item->kategori == 'tubing')
+                        <label for="jumlah_orang">Jumlah Orang
+                        @if ($item->kategori == 'tubing')
                             <sup class="text-danger">* minimal 5 orang</sup>
                         @else
 
@@ -92,7 +93,7 @@
                 });
         });
 
-        $("#tanggal").on("change", function() {
+        $("#tanggal").on("change keyup", function() {
             var tanggal = $('#tanggal').val();
             var id = $('#wisata_id').val();
             if(tanggal.length === 0) {
@@ -120,7 +121,7 @@
             }
         });
 
-        $("#tanggal").on("change", function() {
+        $("#tanggal").on("change keyup", function() {
             var tanggal = $('#tanggal').val();
             if(tanggal.length === 0) {
 
@@ -134,11 +135,11 @@
                     dataType: 'json',
                     success: function (response) {
                         if (response != null) {
-                            document.getElementById('pesan-tanggal').innerHTML = response.pesan;
                             if (response.pesan == '') {
-                                document.getElementById('bayar').disabled = false;
+
                             } else {
                                 document.getElementById('bayar').disabled = true;
+                                document.getElementById('pesan-tanggal').innerHTML = response.pesan;
                             }
                         }
                     }

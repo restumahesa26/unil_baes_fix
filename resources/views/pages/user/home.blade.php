@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Selamat Datang Di Desa Rindu Hati</h1>
         <h2>Tempat Destinasi Wisata Favorit dan Beragam Cerita Rakyat Menarik</h2>
-        <a href="#counts" class="btn-get-started scrollto">Jelajahi</a>
+        <a href="#about" class="btn-get-started scrollto">Jelajahi</a>
     </div>
 </section><!-- End Hero -->
 
@@ -65,6 +65,45 @@
 
         </div>
     </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch">
+                    <a href="https://www.youtube.com/watch?v=2EhAzLxQHMw" class="venobox play-btn mb-4"
+                        data-vbtype="video" data-autoplay="true"></a>
+                </div>
+
+                <div
+                    class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+                    <h3>Penjelasan Fitur Aplikasi</h3>
+                    <p>Video tersebut adalah video tutorial penggunan aplikasi, mulai dari dari pemesanan tiket wisata, penyewaan tenda atau camp, membaca cerita rakyat, pembelian produk komoditas masyarakat, serta fitur belajar bahasa rejang melalui kamus online.</p>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bx-barcode-reader'></i></div>
+                        <h4 class="title"><a href="">E-Ticket</a></h4>
+                        <p class="description">Pemesanan tiket wisata maupun penyewaan tenda atau camp bisa dilakukan secara online dengan bukti pemesanan atau penyewaan berupa QR-Code.</p>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bxs-cart-add'></i></div>
+                        <h4 class="title"><a href="">E-Commerce</a></h4>
+                        <p class="description">Pembelian produk komoditas masyarakat Desa Rindu Hati dapat dilakukan secara cepat dan mudah dari rumah masing-masing secara online. </p>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bxs-book-reader'></i></div>
+                        <h4 class="title"><a href="">Cerita Rakyat</a></h4>
+                        <p class="description">Membaca sejumlah cerita rakyat menarik yang dapat menambah wawasan tentang kebudayaan Desa Rindu Hati</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
@@ -134,9 +173,7 @@
 
             <div class="section-title">
                 <h2>Destinasi</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Kunjungi semua destinasi wisata menarik dan favorit yang terdapat di Desa Rindu Hati. Dengan menggunakan fitur e-ticket, pemesanan dan pemriksaan tiket menjadi lebih mudah dan cepat.</p>
             </div>
 
             <div class="row">
@@ -184,9 +221,7 @@
 
             <div class="section-title">
                 <h2>Produk Komoditas Masyarakat</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Pesan produk komoditas masyarakat Desa Rindu Hati. Produk-produk tersebut merupakan hasil asli dari masyarakat Desa Rindu Hati. Nikmati pemesanan produk secara mudah serta pengiriman yang cepat, yang memberdayakan ojek lokal Desa Rindu Hati.</p>
             </div>
 
             <div class="row">
@@ -225,9 +260,7 @@
 
             <div class="section-title">
                 <h2>Cerita Rakyat</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Ketahui semua cerita rakyat dari Desa Rindu Hati untuk menambah pengetahuan serta wawasan tentang kebudayaan yang terdapat di Desa Rindu Hati. Serta melestarikan cerita rakyat yang terdapat di Desa Rindu Hati.</p>
             </div>
 
             <div class="row">
@@ -317,9 +350,7 @@
 
             <div class="section-title">
                 <h2>Galeri</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Galeri tentang Desa Rindu Hati, mulai dari objek wisata lokal, kegiatan masyarakat, produk komoditas masyarakat, dan hal menarik lainnya.</p>
             </div>
         </div>
 
@@ -343,10 +374,8 @@
         <div class="container">
 
             <div class="section-title">
-                <h2>Maps</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <h2>Petunjuk Arah</h2>
+                <p>Klik google maps dibawah ini untuk melihat petunjuk arah ke Desa Rindu Hati.</p>
             </div>
         </div>
 
