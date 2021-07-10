@@ -350,7 +350,9 @@ aria-hidden="true">
 
     <script>
         $(document).ready( function () {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                ordering: false
+            });
         });
 
         $('.btn-download').on('click', function (event) {

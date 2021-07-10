@@ -233,6 +233,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
+                                        <th>No Hp / WA</th>
                                         <th>Email</th>
                                         <th>Pekerjaan</th>
                                         <th>Roles</th>
@@ -241,6 +242,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-bold-500">{{ Auth::user()->name }}</td>
+                                        <td class="text-bold-500">0{{ Auth::user()->no_hp }}</td>
                                         <td class="text-bold-500">{{ Auth::user()->email }}</td>
                                         <td class="text-bold-500">{{ Auth::user()->pekerjaan }}</td>
                                         <td class="text-bold-500">{{ Auth::user()->roles }}</td>

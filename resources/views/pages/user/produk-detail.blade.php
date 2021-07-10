@@ -47,10 +47,16 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center align-items-center mt-3">
-
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <h5 class="text-center">Story About</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+                </div>
             </div>
-
         </div>
     </section><!-- End Testimonials Section -->
 </main><!-- End #main -->

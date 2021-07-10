@@ -46,6 +46,9 @@
                                     <td class="text-bold-500">{{ $item->pekerjaan }}</td>
                                     <td class="text-bold-500">{{ $item->roles }}</td>
                                     <td class="text-bold-500">
+                                        <a href="https://api.whatsapp.com/send?phone=62{{ $item->no_hp }}&text=Permisi..%20kami%20dari%20admin%20Desa%20Rindu%20Hati%20ingin%20" class="btn btn-info" target="_blank">
+                                            Hubungi
+                                        </a>
                                         @if ($item->roles === 'ADMIN')
                                             <a href="{{ route('profile.set-user', $item->id) }}" class="btn btn-primary">
                                                 Set User

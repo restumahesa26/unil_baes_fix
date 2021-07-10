@@ -421,16 +421,24 @@
 
     <script>
         $(document).ready( function () {
-            $('#table1').DataTable();
+            $('#table1').DataTable({
+                ordering: false
+            });
         });
         $(document).ready( function () {
-            $('#table2').DataTable();
+            $('#table2').DataTable({
+                ordering: false
+            });
         });
         $(document).ready( function () {
-            $('#table3').DataTable();
+            $('#table3').DataTable({
+                ordering: false
+            });
         });
         $(document).ready( function () {
-            $('#table4').DataTable();
+            $('#table4').DataTable({
+                ordering: false
+            });
         });
 
         $('.btn-download').on('click', function (event) {

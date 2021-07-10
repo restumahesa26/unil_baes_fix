@@ -72,6 +72,13 @@
             <x-jet-input-error for="pekerjaan" class="mt-2" />
         </div>
 
+        <!-- No Handphone -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="no_hp" value="{{ __('No Handphone / WA') }}" />
+            <x-jet-input id="no_hp" type="number" class="mt-1 block w-full" wire:model.defer="state.no_hp" autocomplete="no_hp" />
+            <x-jet-input-error for="no_hp" class="mt-2" />
+        </div>
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />

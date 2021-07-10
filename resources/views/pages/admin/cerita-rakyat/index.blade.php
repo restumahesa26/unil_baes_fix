@@ -115,7 +115,9 @@
 
     <script>
         $(document).ready( function () {
-            $('#table-cerita-rakyat').DataTable();
+            $('#table-cerita-rakyat').DataTable({
+                ordering: false
+            });
         });
     </script>
 

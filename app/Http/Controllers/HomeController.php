@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
@@ -154,9 +155,18 @@ class HomeController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'pekerjaan' => ['required', 'string', 'max:255'],
+            'no_hp' => ['required', 'numeric'],
+            'jenis_kelamin' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
+        ]);
+
         $user->update([
             'name' => $request->name,
             'pekerjaan' => $request->pekerjaan,
+            'no_hp' => $request->no_hp,
             'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
         ]);

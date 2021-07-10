@@ -86,7 +86,9 @@
 @push('addon-script')
     <script>
         $(document).ready( function () {
-            $('#cerita-rakyat-table').DataTable();
+            $('#cerita-rakyat-table').DataTable({
+                ordering: false
+            });
         });
     </script>
 @endpush

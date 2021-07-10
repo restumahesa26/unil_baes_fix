@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="jenis_kelamin" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan') }}</label>
+                <label for="jenis_kelamin" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
 
                 <div class="col-md-5">
                     <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
@@ -72,6 +72,20 @@
             </div>
 
             <div class="form-group row">
+                <label for="no_hp" class="col-md-4 col-form-label text-md-right">{{ __('No Handphone / WA') }}</label>
+
+                <div class="col-md-5">
+                    <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="0{{ old('no_hp', $user->no_hp) }}" autocomplete="no_hp" autofocus>
+
+                    @error('no_hp')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                 <div class="col-md-5">
@@ -85,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
+            <div class="form-group row mb-4">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         Update Profile

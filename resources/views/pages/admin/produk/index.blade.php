@@ -130,7 +130,9 @@
 
     <script>
         $(document).ready( function () {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                ordering: false
+            });
         });
 
         $('.btn-delete').on('click', function (e) {
