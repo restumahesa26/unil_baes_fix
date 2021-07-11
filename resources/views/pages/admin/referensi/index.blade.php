@@ -26,7 +26,7 @@
     <div class="card">
         @if ($items->count() < 4)
         <div class="card-header">
-            <a href="{{ route('referensi.create') }}" class="btn btn-sm btn-neutral">Tambah Data Referensi</a>
+            <a href="{{ route('referensi.create') }}" class="btn btn-primary">Tambah Data Referensi</a>
         </div>
         @endif
         <div class="card-body">

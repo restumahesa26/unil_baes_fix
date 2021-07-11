@@ -4,7 +4,9 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
-        <marquee width="100%" height="30" style="font-size: 20px; color: #fff;">Teks ini berjalan</marquee>
+        <marquee width="100%" height="30" style="font-size: 20px; color: #fff;">@foreach ($informasis as $informasi)
+            {{ $informasi->informasi }}. &nbsp;
+        @endforeach</marquee>
         <h1>Selamat Datang Di Desa Rindu Hati</h1>
         <h2>Tempat Destinasi Wisata Favorit dan Beragam Cerita Rakyat Menarik</h2>
         <a href="#about" class="btn-get-started scrollto">Jelajahi</a>
@@ -298,9 +300,7 @@
 
                 <div class="section-title">
                     <h2>Review Website</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>Masukkan review anda tentang pengalaman anda menggunakan website Rindu Hati</p>
                 </div>
 
                 <form action="{{ route('review.store') }}" method="POST">
@@ -323,6 +323,11 @@
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
         <div class="container">
+
+            @if ($review != null)
+                <h2 class="text-center" style="font-size: 32px; font-weight: bold;
+            color: #2c4964;">Review Website</h2>
+            @endif
 
             <div class="owl-carousel testimonials-carousel">
 

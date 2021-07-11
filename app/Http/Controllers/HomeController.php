@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CeritaRakyat;
 use App\Models\Galeri;
+use App\Models\Informasi;
 use App\Models\KritikSaran;
 use App\Models\Produk;
 use App\Models\ProdukTransaksi;
@@ -35,10 +36,11 @@ class HomeController extends Controller
         $wisata = Wisata::inRandomOrder()->where('status', 0)->paginate(3);
         $cerita = CeritaRakyat::inRandomOrder()->paginate(3);
         $produk = Produk::inRandomOrder()->where('status', 0)->paginate(4);
-        $galeri = Galeri::inRandomOrder()->get();;
+        $galeri = Galeri::inRandomOrder()->get();
+        $informasi = Informasi::all();
         return view('pages.user.home', [
             'wisatas' => $wisata, 'ceritas' => $cerita, 'produks' => $produk, 'review' => $review, 'reviews' => $reviews,
-            'luas_desa' => $luas_desa, 'jumlah_penduduk' => $jumlah_penduduk, 'destinasi_wisata' => $destinasi_wisata, 'jarak_ke_kecamatan' => $jarak_ke_kecamatan, 'galeris' => $galeri
+            'luas_desa' => $luas_desa, 'jumlah_penduduk' => $jumlah_penduduk, 'destinasi_wisata' => $destinasi_wisata, 'jarak_ke_kecamatan' => $jarak_ke_kecamatan, 'galeris' => $galeri, 'informasis' => $informasi
         ]);
     }
 

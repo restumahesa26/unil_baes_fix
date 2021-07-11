@@ -145,6 +145,8 @@ Route::prefix('admin')
 
         Route::resource('galeri', 'GaleriController');
 
+        Route::resource('informasi', 'InformasiController');
+
         Route::get('/e-ticket', 'ETicketController@index')->name('e-ticket.index');
 
         Route::get('/e-ticket/bukti-bayar/{id}/', 'ETicketController@lihat_bukti_bayar')->name('e-ticket.bukti-bayar');

@@ -58,14 +58,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ Request::routeIs('galeri.index') || Request::routeIs('galeri.create') || Request::routeIs('galeri.edit') || Request::routeIs('review.index') || Request::routeIs('serba-serbi.index') || Request::routeIs('serba-serbi.create') || Request::routeIs('serba-serbi.edit') || Request::routeIs('referensi.index') || Request::routeIs('referensi.create') || Request::routeIs('referensi.edit') || Request::routeIs('kritik-saran.index') ? 'active' : '' }} has-sub">
+                <li class="sidebar-item {{ Request::routeIs('galeri.index') || Request::routeIs('galeri.create') || Request::routeIs('galeri.edit') || Request::routeIs('review.index') || Request::routeIs('serba-serbi.index') || Request::routeIs('serba-serbi.create') || Request::routeIs('serba-serbi.edit') || Request::routeIs('referensi.index') || Request::routeIs('referensi.create') || Request::routeIs('referensi.edit') || Request::routeIs('kritik-saran.index') || Request::routeIs('informasi.index') || Request::routeIs('informasi.create') || Request::routeIs('informasi.edit') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-gear-fill"></i>
                         <span>Option</span>
                     </a>
-                    <ul class="submenu {{ Request::routeIs('galeri.index') || Request::routeIs('galeri.create') || Request::routeIs('galeri.edit') || Request::routeIs('review.index') || Request::routeIs('serba-serbi.index') || Request::routeIs('serba-serbi.create') || Request::routeIs('serba-serbi.edit') || Request::routeIs('referensi.index') || Request::routeIs('referensi.create') || Request::routeIs('referensi.edit') || Request::routeIs('kritik-saran.index') ? 'active' : '' }}" href="">
+                    <ul class="submenu {{ Request::routeIs('galeri.index') || Request::routeIs('galeri.create') || Request::routeIs('galeri.edit') || Request::routeIs('review.index') || Request::routeIs('serba-serbi.index') || Request::routeIs('serba-serbi.create') || Request::routeIs('serba-serbi.edit') || Request::routeIs('referensi.index') || Request::routeIs('referensi.create') || Request::routeIs('referensi.edit') || Request::routeIs('kritik-saran.index') || Request::routeIs('informasi.index') || Request::routeIs('informasi.create') || Request::routeIs('informasi.edit') ? 'active' : '' }}" href="">
                         <li class="submenu-item {{ Request::routeIs('galeri.index') || Request::routeIs('galeri.create') || Request::routeIs('galeri.edit') ? 'active' : '' }}">
                             <a href="{{ route('galeri.index') }}">Galeri</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('informasi.index') || Request::routeIs('informasi.create') || Request::routeIs('informasi.edit') ? 'active' : '' }}">
+                            <a href="{{ route('informasi.index') }}">Informasi</a>
                         </li>
                         <li class="submenu-item {{ Request::routeIs('kritik-saran.index') ? 'active' : '' }}" href="{{ route('kritik-saran.index') }}">
                             <a href="{{ route('kritik-saran.index') }}">Kritik & Saran</a>
