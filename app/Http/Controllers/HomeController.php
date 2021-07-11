@@ -44,7 +44,7 @@ class HomeController extends Controller
 
     public function wisata()
     {
-        $wisata = Wisata::where('status', 0)->paginate(6);
+        $wisata = Wisata::paginate(6);
         return view('pages.user.wisata', [
             'wisatas' => $wisata
         ]);
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     public function produk()
     {
-        $produk = Produk::where('status', 0)->paginate(6);
+        $produk = Produk::paginate(6);
         return view('pages.user.produk', [
             'produks' => $produk
         ]);
@@ -78,13 +78,9 @@ class HomeController extends Controller
     {
         $item = Wisata::findOrFail($id);
 
-        if ($item->status == 0) {
-            return view('pages.user.wisata-detail', [
-                'item' => $item
-            ]);
-        } else {
-            return redirect()->back();
-        }
+        return view('pages.user.wisata-detail', [
+            'item' => $item
+        ]);
     }
 
     public function transaksi()
@@ -101,14 +97,9 @@ class HomeController extends Controller
     {
         $item = Produk::findOrFail($id);
 
-        if ($item->status == 0) {
-            return view('pages.user.produk-detail', [
-                'item' => $item
-            ]);
-        } else {
-            return redirect()->back();
-        }
-
+        return view('pages.user.produk-detail', [
+            'item' => $item
+        ]);
     }
 
     public function serba_serbi()

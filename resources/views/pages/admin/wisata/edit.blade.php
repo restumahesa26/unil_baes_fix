@@ -153,6 +153,10 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="story">Story</label>
+                        <textarea name="story" id="story" cols="30" rows="10" class="ckeditor form-control">{!! $item->story !!}</textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="">Foto Wisata</label><br>
                         @foreach ($item->gambar_wisata as $gambar)
                             <img src="{{ asset('storage/images/gambar-wisata/'. $gambar->gambar_url) }}" alt="" class="img-thumbnail" style="width: 200px">
@@ -171,6 +175,15 @@
 @endsection
 
 @push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('isi_cerita', {
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
     <script src="{{ url('backend/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <script>

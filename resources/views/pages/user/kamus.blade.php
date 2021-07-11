@@ -20,6 +20,11 @@
     <!-- ======= Doctors Section ======= -->
     <section id="produk" class="produk" style="background-color: #fff">
         <div class="container">
+
+            <h4 class="text-center mb-3">
+                Kamus Bahasa Daerah Rejang
+            </h4>
+
             <div class="form-group row">
                 <div class="col-md-6 col-lg-6 col-sm-6">
                     <label for="kata_kunci" class="col-form-label">Kata Kunci</label>

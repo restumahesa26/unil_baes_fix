@@ -66,6 +66,7 @@ class ProdukController extends Controller
                 $item->stok = $request->stok;
                 $item->berat = $request->berat;
                 $item->harga = $request->harga;
+                $item->story = $request->story;
                 $item->save();
 
                 foreach ($data as $produc) {
@@ -142,6 +143,7 @@ class ProdukController extends Controller
             $item->stok = $request->stok;
             $item->berat = $request->berat;
             $item->harga = $request->harga;
+            $item->story = $request->story;
             $item->save();
 
             if ($request->has('image')) {

@@ -22,7 +22,9 @@
     <section id="detail-wisata" class="detail-wisata" style="margin-top: -40px;">
         <div class="container">
 
-            <h3 class="text-center ">{{ $item->nama_wisata }}</h3>
+            <h3 class="text-center ">{{ $item->nama_wisata }}@if ($item->status == 1)
+                <span style="color: #fff; background-color: #1977cc; padding: 5px; border-radius: 10px; font-size: 14px;">Tempat Tutup</span>
+            @endif</h3>
             <p class="text-center mb-3" style="font-size: 18px">{{ $item->kategori }}</p>
 
             <div class="owl-carousel detail-wisata-carousel">
@@ -120,22 +122,24 @@
         <div class="row justify-content-center align-items-center">
             <h4>Harga {{ rupiah($item->harga) }}</h4>
             @if ($item->kategori == 'wisata' || $item->kategori == 'tubing')
-                <a href="{{ route('beli-tiket', $item->id) }}" class="btn btn-info ml-4 btn-beli-tiket">Beli Tiket</a>
+                <a href="{{ route('beli-tiket', $item->id) }}" class="btn btn-info ml-4 btn-beli-tiket @if ($item->status == 1)
+                    disabled
+                @endif">Beli Tiket</a>
             @elseif ($item->kategori == 'camping' || $item->kategori == 'glamping')
-                <a href="{{ route('sewa', $item->id) }}" class="btn btn-info ml-4 btn-beli-tiket">Sewa</a>
+                <a href="{{ route('sewa', $item->id) }}" class="btn btn-info ml-4 btn-beli-tiket @if ($item->status == 1)
+                    disabled
+                @endif">Sewa</a>
             @endif
         </div>
 
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <h5 class="text-center">Story About</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet culpa inventore ex totam exercitationem eos aperiam earum eius commodi, aliquid distinctio, quam sint assumenda aut ad possimus! Modi, ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nisi totam minima, pariatur et recusandae exercitationem quod? Quas, placeat rem, debitis consequatur soluta eos aspernatur quos libero odio possimus nemo.</p>
+        @if ($item->story != NULL)
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <h5 class="text-center">Story About</h5>
+                    {!! $item->story !!}
+                </div>
             </div>
-        </div>
+        @endif
 
         </div>
     </section><!-- End Testimonials Section -->

@@ -21,6 +21,10 @@
     <section id="produk" class="produk" style="background-color: #fff">
         <div class="container">
 
+            <h4 class="text-center mb-3">
+                Produk Komoditas Masyarakat
+            </h4>
+
             <div class="row">
                 @foreach ($produks as $produk)
                 <div class="col-lg-6">
@@ -41,6 +45,9 @@
                                 <h5><strong>{{ rupiah($produk->harga) }}</strong></h5>
                             </div>
                         </div>
+                        @if ($produk->status == 1)
+                            <h5 style="top: 10%; left:0; z-index: 9999; position: absolute; color: #fff; background-color: #1977cc; padding: 5px; border-radius: 10px; font-size: 14px">Produk Habis</h5>
+                        @endif
                     </div>
                 </div>
                 @endforeach

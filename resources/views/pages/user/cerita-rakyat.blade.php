@@ -20,6 +20,10 @@
     <section id="cerita" class="cerita">
         <div class="container">
 
+            <h4 class="text-center mb-3">
+                Cerita Rakyat
+            </h4>
+
             <div class="row">
                 @foreach ($ceritas as $cerita)
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-2">

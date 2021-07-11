@@ -4,6 +4,7 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
+        <marquee width="100%" height="30" style="font-size: 20px; color: #fff;">Teks ini berjalan</marquee>
         <h1>Selamat Datang Di Desa Rindu Hati</h1>
         <h2>Tempat Destinasi Wisata Favorit dan Beragam Cerita Rakyat Menarik</h2>
         <a href="#about" class="btn-get-started scrollto">Jelajahi</a>

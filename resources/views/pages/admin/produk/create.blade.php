@@ -85,6 +85,10 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="story">Story</label>
+                        <textarea name="story" id="story" cols="30" rows="10" class="ckeditor form-control"></textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="foto_produk">Foto Produk</label>
                         <input type="file" name="image[]" class="form-control" id="foto_produk" placeholder="Masukkan Foto Produk" multiple required>
                         @error('foto_produk')
@@ -102,6 +106,15 @@
 @endsection
 
 @push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('isi_cerita', {
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
     <script src="{{ url('backend/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <script>

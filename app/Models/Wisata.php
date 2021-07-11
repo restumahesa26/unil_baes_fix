@@ -10,7 +10,7 @@ class Wisata extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_wisata', 'deskripsi', 'fasilitas', 'harga', 'hari_buka', 'jam_buka', 'jam_tutup', 'kategori', 'waktu', 'ketentuan', 'status'
+        'nama_wisata', 'deskripsi', 'fasilitas', 'harga', 'hari_buka', 'jam_buka', 'jam_tutup', 'kategori', 'waktu', 'ketentuan', 'status', 'story'
     ];
 
     public function gambar_wisata()
