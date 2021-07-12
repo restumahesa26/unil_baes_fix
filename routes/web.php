@@ -149,6 +149,10 @@ Route::prefix('admin')
 
         Route::get('/e-ticket', 'ETicketController@index')->name('e-ticket.index');
 
+        Route::get('/e-ticket/tambah-data', 'ETicketController@tambahData')->name('e-ticket.create');
+
+        Route::post('/e-ticket/tambah-data/store', 'ETicketController@storeData')->name('e-ticket.store');
+
         Route::get('/e-ticket/bukti-bayar/{id}/', 'ETicketController@lihat_bukti_bayar')->name('e-ticket.bukti-bayar');
 
         Route::get('/e-ticket/konfirmasi-pembayaran/{id}/', 'ETicketController@konfirmasi_bayar')->name('e-ticket.konfirmasi-pembayaran');
@@ -174,6 +178,12 @@ Route::prefix('admin')
         Route::get('/e-commerce/batal-pembayaran-ongkir/{id}/', 'ECommerceController@batal_pembayaran_ongkir')->name('e-commerce.batal-pembayaran-ongkir');
 
         Route::get('/review', 'ReviewController@index')->name('review.index');
+
+        Route::get('/put-harga/api', 'APIController@putHarga')->name('put-harga.api');
+
+        Route::get('/cek-sewa', 'APIController@cek_sewa_2')->name('cek-sewa-2.api');
+
+        Route::get('/cek-kategori-wisata', 'APIController@cekTipeWisata')->name('cek-kategori-wisata.api');
 
         Route::get('/review/aktif/{id}/', 'ReviewController@buat_aktif')->name('review.aktif');
 

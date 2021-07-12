@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Wisata;
 use App\Models\WisataTransaksi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +69,45 @@ class ETicketController extends Controller
         $filename  = ('public/images/bukti-bayar-tiket/').$item->bukti_bayar;
         Storage::delete($filename);
         $item->delete();
+
+        return redirect()->route('e-ticket.index');
+    }
+
+    public function tambahData()
+    {
+        $wisata = Wisata::where('status', 0)->get();
+        return view('pages.admin.e-ticket.create', [
+            'wisatas' => $wisata
+        ]);
+    }
+
+    public function storeData(Request $request)
+    {
+        $item = new WisataTransaksi();
+        $item->wisata_id = $request->wisata_id;
+        $item->user_id = Auth::user()->id;
+
+        $wisata = Wisata::findOrFail($request->wisata_id);
+        if ($wisata->kategori == 'wisata' || $wisata->kategori == 'tubing') {
+            $item->jumlah_orang = $request->jumlah_orang;
+            $item->tanggal_tiket = $request->tanggal_tiket;
+        }elseif ($wisata->kategori == 'camping' || $wisata->kategori == 'glamping') {
+            $item->jam_sewa = $request->jam_sewa;
+            $item->tanggal_sewa = $request->tanggal_sewa;
+        }
+        $item->total_bayar = $request->total_bayar;
+        $item->status_bayar = 'sudah-bayar';
+        $item->save();
+
+        $user_id = Auth::user()->id;
+
+        $tgl = $item->tanggal_tiket;
+        $tgl2 = Str::remove('-', $tgl);
+        $text = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 6);
+
+        $qr_code = "TC-" . $item->id . $user_id . $tgl2 . $item->jumlah_orang . $text;
+        $item->qr_code = $qr_code;
+        $item->save();
 
         return redirect()->route('e-ticket.index');
     }

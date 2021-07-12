@@ -38,7 +38,7 @@
                             <option value="belum-konfirmasi-ongkir">Belum Dikonfirmasi Ongkos Kirim</option>
                         </select>
                     </div>
-                    <div class="form-group col-2">
+                    <div class="form-group col-3">
                         <input type="date" name="filter_tanggal" placeholder="Masukkan Tanggal" class="form-control">
                     </div>
                     <div class="form-group col-3">

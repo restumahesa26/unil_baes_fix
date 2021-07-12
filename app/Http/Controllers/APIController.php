@@ -104,12 +104,19 @@ class APIController extends Controller
         if ($check->jumlah_orang === null) {
             $jumlah = $check->wisata->nama_wisata .' : ' . $check->jam_sewa;
             $tanggal = Carbon::parse($check->tanggal_sewa)->translatedFormat('l, d F Y');
-            $nama = $check->user->name;
-
+            if ($check->user->roles == 'ADMIN') {
+                $nama = 'Admin';
+            }elseif ($check->user->roles == 'USER') {
+                $nama = $check->user->name;
+            }
         } else {
             $jumlah = $check->wisata->nama_wisata .' : '. $check->jumlah_orang . ' Orang';
             $tanggal = Carbon::parse($check->tanggal_tiket)->translatedFormat('l, d F Y');
-            $nama = $check->user->name;
+            if ($check->user->roles == 'ADMIN') {
+                $nama = 'Admin';
+            }elseif ($check->user->roles == 'USER') {
+                $nama = $check->user->name;
+            }
         }
 
         if ($check === null) {
@@ -140,6 +147,40 @@ class APIController extends Controller
 
             @header('Content-type: text/html; charset=utf-8');
             echo $response;
+        }
+    }
+
+    public function putHarga(Request $request)
+    {
+        $id = Wisata::findOrFail($request->id);
+        $harga = $id->harga;
+
+        return response()->json(['harga' => $harga, 'id' => $request->id]);
+    }
+
+    public function cek_sewa_2(Request $request)
+    {
+        $jam = $request->jam;
+        $tanggal = $request->tanggal;
+
+        $check = WisataTransaksi::where('wisata_id', $request->id)->where('tanggal_sewa', $tanggal)->where('jam_sewa', $jam)->first();
+
+        if ($check == null) {
+            return response()->json(['pesan'=>'Bisa Dibooking']);
+        }else {
+            return response()->json(['pesan'=>'Mohon Maaf.. Sudah Tidak Bisa Dibooking']);
+        }
+    }
+
+    public function cekTipeWisata(Request $request)
+    {
+        $id = Wisata::findOrFail($request->id);
+        $kategori = $id->kategori;
+
+        if ($kategori == 'wisata' || $kategori == 'tubing') {
+            return response()->json(['pesan'=>'wisata']);
+        }elseif ($kategori == 'camping' || $kategori == 'glamping') {
+            return response()->json(['pesan'=>'camping']);
         }
     }
 }

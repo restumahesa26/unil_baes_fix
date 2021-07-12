@@ -17,7 +17,7 @@
                         <option value="belum-konfirmasi">Belum Dikonfirmasi</option>
                     </select>
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-3">
                     <input type="date" name="filter_tanggal" placeholder="Masukkan Tanggal" class="form-control">
                 </div>
                 <div class="form-group col-3">
@@ -26,6 +26,7 @@
                 </div>
             </div>
         </form>
+        <a href="{{ route('e-ticket.create') }}" class="btn btn-primary mt-2">Tambah Data E-Ticket</a>
     </div>
 </div>
 
@@ -55,7 +56,13 @@
                         <tbody id="tbody">
                             @forelse ($items->where('wisata.kategori', 'wisata') as $wisata)
                             <tr class="text-center">
-                                <td>{{ $wisata->user->name }}</td>
+                                <td>
+                                    @if ($wisata->user->roles == 'ADMIN')
+                                        Admin
+                                    @elseif ($wisata->user->roles == 'USER')
+                                        {{ $wisata->user->name }}
+                                    @endif
+                                </td>
                                 <td>{{ $wisata->wisata->nama_wisata }}</td>
                                 <td>{{ $wisata->jumlah_orang }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_tiket)->translatedFormat('l, d F Y') }}</td>
@@ -149,7 +156,13 @@
                         <tbody id="tbody">
                             @forelse ($items->where('wisata.kategori', 'camping') as $wisata)
                             <tr class="text-center">
-                                <td>{{ $wisata->user->name }}</td>
+                                <td>
+                                    @if ($wisata->user->roles == 'ADMIN')
+                                        Admin
+                                    @elseif ($wisata->user->roles == 'USER')
+                                        {{ $wisata->user->name }}
+                                    @endif
+                                </td>
                                 <td>{{ $wisata->wisata->nama_wisata }}</td>
                                 <td>{{ $wisata->jam_sewa }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
@@ -243,7 +256,13 @@
                         <tbody id="tbody">
                             @forelse ($items->where('wisata.kategori', 'glamping') as $wisata)
                             <tr class="text-center">
-                                <td>{{ $wisata->user->name }}</td>
+                                <td>
+                                    @if ($wisata->user->roles == 'ADMIN')
+                                        Admin
+                                    @elseif ($wisata->user->roles == 'USER')
+                                        {{ $wisata->user->name }}
+                                    @endif
+                                </td>
                                 <td>{{ $wisata->wisata->nama_wisata }}</td>
                                 <td>{{ $wisata->jam_sewa }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
@@ -336,7 +355,13 @@
                         <tbody id="tbody">
                             @forelse ($items->where('wisata.kategori', 'tubing') as $wisata)
                             <tr class="text-center">
-                                <td>{{ $wisata->user->name }}</td>
+                                <td>
+                                    @if ($wisata->user->roles == 'ADMIN')
+                                        Admin
+                                    @elseif ($wisata->user->roles == 'USER')
+                                        {{ $wisata->user->name }}
+                                    @endif
+                                </td>
                                 <td>{{ $wisata->jumlah_orang }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_tiket)->translatedFormat('l, d F Y') }}</td>
                                 <td>@if ($wisata->status_bayar == 'belum-bayar')

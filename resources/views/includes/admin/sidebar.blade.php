@@ -43,13 +43,13 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-commerce.index') || Request::routeIs('e-commerce.bukti-bayar') || Request::routeIs('e-commerce.pilih-pengiriman') || Request::routeIs('e-commerce.bukti-ongkos-kirim') || Request::routeIs('e-ticket-filter') || Request::routeIs('e-commerce-filter') ? 'active' : '' }} has-sub">
+                <li class="sidebar-item {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-commerce.index') || Request::routeIs('e-commerce.bukti-bayar') || Request::routeIs('e-commerce.pilih-pengiriman') || Request::routeIs('e-commerce.bukti-ongkos-kirim') || Request::routeIs('e-ticket-filter') || Request::routeIs('e-commerce-filter') || Request::routeIs('e-ticket.create') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-cart-check-fill"></i>
                         <span>Transaksi</span>
                     </a>
-                    <ul class="submenu {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-commerce.index') || Request::routeIs('e-commerce.bukti-bayar') || Request::routeIs('e-commerce.pilih-pengiriman') || Request::routeIs('e-commerce.bukti-ongkos-kirim') || Request::routeIs('e-ticket-filter') || Request::routeIs('e-commerce-filter') ? 'active' : '' }}">
-                        <li class="submenu-item {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-ticket-filter') ? 'active' : '' }}">
+                    <ul class="submenu {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-commerce.index') || Request::routeIs('e-commerce.bukti-bayar') || Request::routeIs('e-commerce.pilih-pengiriman') || Request::routeIs('e-commerce.bukti-ongkos-kirim') || Request::routeIs('e-ticket-filter') || Request::routeIs('e-commerce-filter') || Request::routeIs('e-ticket.create') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('e-ticket.index') || Request::routeIs('e-ticket.bukti-bayar') || Request::routeIs('e-ticket-filter') || Request::routeIs('e-ticket.create') ? 'active' : '' }}">
                             <a href="{{ route('e-ticket.index') }}">E-Ticket</a>
                         </li>
                         <li class="submenu-item {{ Request::routeIs('e-commerce.index') || Request::routeIs('e-commerce.bukti-bayar') || Request::routeIs('e-commerce.pilih-pengiriman') || Request::routeIs('e-commerce.bukti-ongkos-kirim') || Request::routeIs('e-commerce-filter') ? 'active' : '' }}">
@@ -103,6 +103,13 @@
                     <a href="{{ route('profile.show') }}" class='sidebar-link'>
                         <i class="bi bi-person-fill"></i>
                         <span>Change Profile</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('home') }}" class='sidebar-link'>
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                        <span>Back To Home</span>
                     </a>
                 </li>
 
