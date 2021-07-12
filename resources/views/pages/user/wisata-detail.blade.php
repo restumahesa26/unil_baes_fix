@@ -132,6 +132,10 @@
             @endif
         </div>
 
+        <h4 class="mt-5 text-center">Wisata 360</h4>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1626014115431!6m8!1m7!1sXr0umzyRbe3NaLHvhqhq8g!2m2!1d-3.686301241512151!2d102.5373725739207!3f189.9678038328545!4f3.8027229931862223!5f0.7820865974627469" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
         @if ($item->story != NULL)
             <div class="row mt-4">
                 <div class="col-lg-12">

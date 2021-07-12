@@ -31,8 +31,9 @@ class ReferensiController extends Controller
     public function store(ReferensiRequest $request)
     {
         $item = new Referensi();
-        $item->kategori = $request->kategori;
-        $item->value = $request->value;
+        $item->jml_penduduk = $request->jml_penduduk;
+        $item->luas_desa = $request->luas_desa;
+        $item->jarak_kecamatan = $request->jarak_kecamatan;
         $item->save();
 
         return redirect()->route('referensi.index');
@@ -50,8 +51,9 @@ class ReferensiController extends Controller
     public function update(ReferensiRequest $request, $id)
     {
         $item = Referensi::findOrFail($id);
-        $item->kategori = $request->kategori;
-        $item->value = $request->value;
+        $item->jml_penduduk = $request->jml_penduduk;
+        $item->luas_desa = $request->luas_desa;
+        $item->jarak_kecamatan = $request->jarak_kecamatan;
         $item->save();
 
         return redirect()->route('referensi.index');

@@ -24,19 +24,20 @@
 </div>
 <div class="page-content">
     <div class="card">
-        @if ($items->count() < 4)
+        @if ($items->count() < 1)
         <div class="card-header">
             <a href="{{ route('referensi.create') }}" class="btn btn-primary">Tambah Data Referensi</a>
         </div>
         @endif
         <div class="card-body">
             <div class="table-responsive px-3 py-3">
-                <table class="table table-bordered table-hover" width="100%" cellspacing="0" id="cerita-rakyat-table">
+                <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
-                            <th>Kategori</th>
-                            <th>Value</th>
+                            <th>Luas Desa</th>
+                            <th>Jumlah Penduduk</th>
+                            <th>Jarak Ke Kecamatan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -50,18 +51,9 @@
                         @endphp
                         <tr class="text-center">
                             <td>{{ $no }}</td>
-                            <td>
-                                @if ($item->kategori == 'luas-desa')
-                                    Luas Desa
-                                @elseif ($item->kategori == 'jumlah-penduduk')
-                                    Jumlah Penduduk
-                                @elseif ($item->kategori == 'destinasi-wisata')
-                                    Destinasi Wisata
-                                @elseif ($item->kategori == 'jarak-ke-kecamatan')
-                                    Jarak Ke Kecamatan
-                                @endif
-                            </td>
-                            <td>{{ $item->value }}</td>
+                            <td>{{ $item->luas_desa }}</td>
+                            <td>{{ $item->jml_penduduk }}</td>
+                            <td>{{ $item->jarak_kecamatan }}</td>
                             <td>
                                 <a href="{{ route('referensi.edit', $item->id) }}" class="btn btn-primary">
                                     <i class="bi bi-pencil-fill"></i>
@@ -82,13 +74,3 @@
     </div>
 </div>
 @endsection
-
-@push('addon-script')
-    <script>
-        $(document).ready( function () {
-            $('#cerita-rakyat-table').DataTable({
-                ordering: false
-            });
-        });
-    </script>
-@endpush

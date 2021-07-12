@@ -10,6 +10,6 @@ class Referensi extends Model
     use HasFactory;
 
     public $fillable = [
-        'kategori', 'value'
+        'luas_desa', 'jml_penduduk', 'jarak_kecamatan'
     ];
 }

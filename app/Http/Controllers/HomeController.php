@@ -28,19 +28,17 @@ class HomeController extends Controller
         if (Auth::user()) {
             $review = Review::where('user_id', Auth::user()->id)->first();
         }
-        $luas_desa = Referensi::where('kategori', 'luas-desa')->first();
-        $jumlah_penduduk = Referensi::where('kategori', 'jumlah-penduduk')->first();
-        $destinasi_wisata = Referensi::where('kategori', 'destinasi-wisata')->first();
-        $jarak_ke_kecamatan = Referensi::where('kategori', 'jarak-ke-kecamatan')->first();
+        $referensi = Referensi::first();
         $reviews = Review::where('active', 0)->inRandomOrder()->get();
         $wisata = Wisata::inRandomOrder()->where('status', 0)->paginate(3);
+        $wisata2 = Wisata::count();
         $cerita = CeritaRakyat::inRandomOrder()->paginate(3);
         $produk = Produk::inRandomOrder()->where('status', 0)->paginate(4);
         $galeri = Galeri::inRandomOrder()->get();
         $informasi = Informasi::all();
         return view('pages.user.home', [
             'wisatas' => $wisata, 'ceritas' => $cerita, 'produks' => $produk, 'review' => $review, 'reviews' => $reviews,
-            'luas_desa' => $luas_desa, 'jumlah_penduduk' => $jumlah_penduduk, 'destinasi_wisata' => $destinasi_wisata, 'jarak_ke_kecamatan' => $jarak_ke_kecamatan, 'galeris' => $galeri, 'informasis' => $informasi
+            'referensis' => $referensi, 'galeris' => $galeri, 'informasis' => $informasi, 'wisata2' => $wisata2
         ]);
     }
 

@@ -17,7 +17,7 @@ class GaleriController extends Controller
     public function index()
     {
         $items = Galeri::all();
-        
+
         return view('pages.admin.galeri.index', [
             'items' => $items
         ]);
@@ -75,7 +75,7 @@ class GaleriController extends Controller
     public function edit($id)
     {
         $item = Galeri::findOrFail($id);
-        
+
         return view('pages.admin.galeri.edit', [
             'item' => $item
         ]);
@@ -122,6 +122,8 @@ class GaleriController extends Controller
     public function destroy($id)
     {
         $item = Galeri::findOrFail($id);
+        $filename  = ('public/images/galeri/').$item->image_url;
+        Storage::delete($filename);
         $item->delete();
 
         return redirect()->route('galeri.index');

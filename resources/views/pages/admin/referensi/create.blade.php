@@ -31,27 +31,27 @@
                 <form action="{{ route('referensi.store') }}" method="POST" class="px-4 py-4">
                     @csrf
                     <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-control" required>
-                            <option value="">Pilih Kategori</option>
-                            @if ($check->where('kategori', 'luas-desa')->count() == 0)
-                                <option value="luas-desa">Luas Desa</option>
-                            @endif
-                            @if ($check->where('kategori', 'jumlah-penduduk')->count() == 0)
-                                <option value="jumlah-penduduk">Jumlah Penduduk</option>
-                            @endif
-                            @if ($check->where('kategori', 'destinasi-wisata')->count() == 0)
-                                <option value="destinasi-wisata">Destinasi Wisata</option>
-                            @endif
-                            @if ($check->where('kategori', 'jarak-ke-kecamatan')->count() == 0)
-                                <option value="jarak-ke-kecamatan">Jarak Ke Kecamatan</option>
-                            @endif
-                        </select>
+                        <label for="luas_desa">Luas Desa <sup class="text-danger">satuan km</sup></label>
+                        <input type="number" name="luas_desa" class="form-control @error('luas_desa') is-invalid @enderror" placeholder="Masukkan Luas Desa" required value="{{ old('luas_desa') }}">
+                        @error('luas_desa')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="value">Value</label>
-                        <input type="number" name="value" class="form-control @error('value') is-invalid @enderror" placeholder="Masukkan Value" required>
-                        @error('value')
+                        <label for="jml_penduduk">Jumlah Penduduk</label>
+                        <input type="number" name="jml_penduduk" class="form-control @error('jml_penduduk') is-invalid @enderror" placeholder="Masukkan Jumlah Penduduk" required value="{{ old('jml_penduduk') }}">
+                        @error('jml_penduduk')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="jarak_kecamatan">Jarak Ke Kecamatan <sup class="text-danger">satuan km</sup></label>
+                        <input type="number" name="jarak_kecamatan" class="form-control @error('jarak_kecamatan') is-invalid @enderror" placeholder="Masukkan Jarak Ke Kecamatan" required value="{{ old('jarak_kecamatan') }}">
+                        @error('jarak_kecamatan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

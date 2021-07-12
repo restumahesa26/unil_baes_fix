@@ -32,34 +32,27 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-control" required>
-                            @if ($item->kategori == 'luas-desa')
-                                <option value="luas-desa" @if ($item->kategori == 'luas-desa')
-                                    selected
-                                @endif>Luas Desa</option>
-                            @endif
-                            @if ($item->kategori == 'jumlah-penduduk')
-                                <option value="jumlah-penduduk" @if ($item->kategori == 'jumlah-penduduk')
-                                    selected
-                                @endif>Jumlah Penduduk</option>
-                            @endif
-                            @if ($item->kategori == 'destinasi-wisata')
-                                <option value="destinasi-wisata" @if ($item->kategori == 'destinasi-wisata')
-                                    selected
-                                @endif>Destinasi Wisata</option>
-                            @endif
-                            @if ($item->kategori == 'jarak-ke-kecamatan')
-                                <option value="jarak-ke-kecamatan" @if ($item->kategori == 'jarak-ke-kecamatan')
-                                    selected
-                                @endif>Jarak Ke Kecamatan</option>
-                            @endif
-                        </select>
+                        <label for="luas_desa">Luas Desa</label>
+                        <input type="number" name="luas_desa" class="form-control @error('luas_desa') is-invalid @enderror" placeholder="Masukkan Luas Desa" required value="{{ $item->luas_desa }}">
+                        @error('luas_desa')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="value">Value</label>
-                        <input type="number" name="value" class="form-control @error('value') is-invalid @enderror" placeholder="Masukkan Value" value="{{ $item->value }}" required>
-                        @error('value')
+                        <label for="jml_penduduk">Jumlah Penduduk</label>
+                        <input type="number" name="jml_penduduk" class="form-control @error('jml_penduduk') is-invalid @enderror" placeholder="Masukkan Jumlah Penduduk" required value="{{ $item->jml_penduduk }}">
+                        @error('jml_penduduk')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="jarak_kecamatan">Jarak Ke Kecamatan</label>
+                        <input type="number" name="jarak_kecamatan" class="form-control @error('jarak_kecamatan') is-invalid @enderror" placeholder="Masukkan Jarak Ke Kecamatan" required value="{{ $item->jarak_kecamatan }}">
+                        @error('jarak_kecamatan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
