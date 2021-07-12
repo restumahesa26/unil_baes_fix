@@ -23,9 +23,6 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                @if (Auth::user()->roles == 'ADMIN')
-                <li class=""><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                @endif
                 <li class="@if (Route::is('home') || Route::is('serba-serbi'))
                     active
                 @endif"><a href="{{ route('home') }}">Home</a></li>
@@ -48,6 +45,11 @@
                     <li class="@if (Route::is('transaksi') || Route::is('bayar-tiket-show'))
                     active
                 @endif"><a href="{{ route('transaksi') }}">Transaksi</a></li>
+                @endif
+                @if (Auth::user())
+                @if (Auth::user()->roles == 'ADMIN')
+                <li class=""><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                @endif
                 @endif
             </ul>
         </nav><!-- .nav-menu -->

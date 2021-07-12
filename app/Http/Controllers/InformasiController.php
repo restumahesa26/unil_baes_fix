@@ -108,4 +108,22 @@ class InformasiController extends Controller
 
         return redirect()->route('informasi.index')->with('sukses-hapus', 'Sukses');
     }
+
+    public function aktif($id)
+    {
+        $item = Informasi::findOrFail($id);
+        $item->status = 0;
+        $item->save();
+
+        return redirect()->route('informasi.index');
+    }
+
+    public function tidakAktif($id)
+    {
+        $item = Informasi::findOrFail($id);
+        $item->status = 1;
+        $item->save();
+
+        return redirect()->route('informasi.index');
+    }
 }

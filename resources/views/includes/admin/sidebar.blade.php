@@ -85,14 +85,14 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ Request::routeIs('qr-code.index')  ? 'active' : '' }}">
                     <a href="{{ route('qr-code.index') }}" class='sidebar-link'>
                         <i class="bi bi-upc-scan"></i>
                         <span>Scan QR-Code</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ Request::routeIs('profile.index')  ? 'active' : '' }}">
                     <a href="{{ route('profile.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-lines-fill"></i>
                         <span>User & Admin</span>

@@ -104,6 +104,8 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
     Route::get('/profile', 'HomeController@profileEdit')->name('profile.edit');
 
     Route::patch('profile/update', 'HomeController@profileUpdate')->name('profile.update');
+
+    Route::post('/subscribe-email', 'HomeController@subscribeEmail')->name('subscribe-email');
 });
 
 Route::prefix('admin')
@@ -146,6 +148,10 @@ Route::prefix('admin')
         Route::resource('galeri', 'GaleriController');
 
         Route::resource('informasi', 'InformasiController');
+
+        Route::get('/informasi/aktif/{id}/', 'InformasiController@aktif')->name('informasi.aktif');
+
+        Route::get('/informasi/tidak-aktif/{id}/', 'InformasiController@tidakAktif')->name('informasi.tidak-aktif');
 
         Route::get('/e-ticket', 'ETicketController@index')->name('e-ticket.index');
 
@@ -223,6 +229,8 @@ Route::prefix('admin')
 
         Route::delete('/user-admin/delete-user/{id}/', 'ProfileController@deleteUserAdmin')->name('profile.delete-user-admin');
 
+        Route::delete('/email-subscribe/{id}/', 'ProfileController@deleteEmail')->name('delete-subscribe-email');
+
         Route::get('/kritik-saran', 'KritikSaranController@index')->name('kritik-saran.index');
 
         Route::delete('/kritik-saran/delete/{id}/', 'KritikSaranController@destroy')->name('kritik-saran.destroy');
@@ -238,5 +246,7 @@ Route::prefix('admin')
         Route::get('/produk-show/filter', 'FilterController@produk_filter')->name('produk-filter');
 
         Route::get('/wisata-show/filter', 'FilterController@wisata_filter')->name('wisata-filter');
+
+        Route::get('/kirim-email-informasi/{id}/', 'EmailController@emailInformasi')->name('kirim-email-informasi');
 
     });

@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="card-body text-center" style="margin-top: -60px;">
-            <video id="preview"></video>
+            <video id="preview" style="width: 100%; height: 420px;"></video>
         </div>
     </div>
 </div>

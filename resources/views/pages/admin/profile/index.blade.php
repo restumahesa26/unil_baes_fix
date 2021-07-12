@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Scan QR-Code</title>
+    <title>User & Admin</title>
 @endsection
 
 @section('content')
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <!-- Table with outer spacing -->
                 <div class="table-responsive">
-                    <table class="table table-lg">
+                    <table class="table table-lg" id="table1">
                         <thead>
                             <tr class="">
                                 <th>Nama</th>
@@ -68,7 +68,66 @@
                                     </td>
                                 </tr>
                             @empty
+                                <tr>
+                                    <td colspan="8">Data Kosong</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Email Subscribe</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Email Subscribe</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <!-- Table with outer spacing -->
+                <div class="table-responsive">
+                    <table class="table table-lg" id="table2">
+                        <thead>
+                            <tr class="">
+                                <th>Email</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($emails as $email)
+                                <tr>
+                                    <td class="text-bold-500">{{ $email->email }}</td>
+                                    <td class="text-bold-500">
+                                        <form action="{{ route('delete-subscribe-email', $email->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger btn-delete">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                            <tr>
+                                <td colspan="8">Data Kosong</td>
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -80,7 +139,19 @@
 @endsection
 
 @push('addon-script')
+    <script>
+        $(document).ready( function () {
+            $('#table1').DataTable({
+                ordering: false
+            });
+        });
 
+        $(document).ready( function () {
+            $('#table2').DataTable({
+                ordering: false
+            });
+        });
+    </script>
 @endpush
 
 @push('addon-style')

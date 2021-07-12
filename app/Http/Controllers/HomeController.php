@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CeritaRakyat;
+use App\Models\EmailSubscribe;
 use App\Models\Galeri;
 use App\Models\Informasi;
 use App\Models\KritikSaran;
@@ -35,7 +36,7 @@ class HomeController extends Controller
         $cerita = CeritaRakyat::inRandomOrder()->paginate(3);
         $produk = Produk::inRandomOrder()->where('status', 0)->paginate(4);
         $galeri = Galeri::inRandomOrder()->get();
-        $informasi = Informasi::all();
+        $informasi = Informasi::where('status', 0)->get();
         return view('pages.user.home', [
             'wisatas' => $wisata, 'ceritas' => $cerita, 'produks' => $produk, 'review' => $review, 'reviews' => $reviews,
             'referensis' => $referensi, 'galeris' => $galeri, 'informasis' => $informasi, 'wisata2' => $wisata2
@@ -163,5 +164,14 @@ class HomeController extends Controller
         ]);
 
         return redirect()->route('profile.edit');
+    }
+
+    public function subscribeEmail(Request $request)
+    {
+        $data = $request->except(['_token']);
+
+        EmailSubscribe::create($data);
+
+        return redirect()->route('home');
     }
 }

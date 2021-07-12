@@ -5,7 +5,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <marquee width="100%" height="30" style="font-size: 20px; color: #fff;">@foreach ($informasis as $informasi)
-            {{ $informasi->informasi }}. &nbsp;
+            {{ $informasi->informasi }}. &nbsp; &nbsp; &nbsp;
         @endforeach</marquee>
         <h1>Selamat Datang Di Desa Rindu Hati</h1>
         <h2>Tempat Destinasi Wisata Favorit dan Beragam Cerita Rakyat Menarik</h2>
@@ -86,19 +86,19 @@
 
                     <div class="icon-box">
                         <div class="icon"><i class='bx bx-barcode-reader'></i></div>
-                        <h4 class="title"><a href="">E-Ticket</a></h4>
+                        <h4 class="title"><a href="{{ route('wisata') }}">E-Ticket</a></h4>
                         <p class="description">Pemesanan tiket wisata maupun penyewaan tenda atau camp bisa dilakukan secara online dengan bukti pemesanan atau penyewaan berupa QR-Code.</p>
                     </div>
 
                     <div class="icon-box">
                         <div class="icon"><i class='bx bxs-cart-add'></i></div>
-                        <h4 class="title"><a href="">E-Commerce</a></h4>
+                        <h4 class="title"><a href="{{ route('produk') }}">E-Commerce</a></h4>
                         <p class="description">Pembelian produk komoditas masyarakat Desa Rindu Hati dapat dilakukan secara cepat dan mudah dari rumah masing-masing secara online. </p>
                     </div>
 
                     <div class="icon-box">
                         <div class="icon"><i class='bx bxs-book-reader'></i></div>
-                        <h4 class="title"><a href="">Cerita Rakyat</a></h4>
+                        <h4 class="title"><a href="{{ route('cerita-rakyat') }}">Cerita Rakyat</a></h4>
                         <p class="description">Membaca sejumlah cerita rakyat menarik yang dapat menambah wawasan tentang kebudayaan Desa Rindu Hati</p>
                     </div>
 

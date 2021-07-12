@@ -42,8 +42,10 @@
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Join Our Newsletter</h4>
                     <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    <form action="{{ route('subscribe-email') }}" method="POST">
+                        @csrf
+                        <input type="email" name="email" class="form-control">
+                        <input type="submit" value="Subscribe">
                     </form>
                 </div>
 

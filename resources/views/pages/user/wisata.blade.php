@@ -38,7 +38,7 @@
                                 @endforeach
                             </div>
                             @if ($wisata->status == 1)
-                                <h5 style="top: 33%; left:31%; z-index: 9999; position: absolute; color: #1977cc; background-color: #fff; padding: 5px; border-radius: 10px;">Tempat Tutup</h5>
+                                <h5 style="top: 33%; left:31%; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px;">Tempat Tutup</h5>
                             @endif
                             <h4><a href="">{{ $wisata->nama_wisata }}</a></h4>
                             <h5 style="font-size: 14px; color: #1977cc">Kategori : @if ($wisata->kategori == 'wisata')

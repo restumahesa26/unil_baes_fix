@@ -23,7 +23,7 @@
         <div class="container">
 
             <h3 class="text-center ">{{ $item->nama_wisata }}@if ($item->status == 1)
-                <span style="color: #fff; background-color: #1977cc; padding: 5px; border-radius: 10px; font-size: 14px;">Tempat Tutup</span>
+                <span style="color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 14px;">Tempat Tutup</span>
             @endif</h3>
             <p class="text-center mb-3" style="font-size: 18px">{{ $item->kategori }}</p>
 
@@ -122,7 +122,11 @@
         <div class="row justify-content-center align-items-center">
             <h4>Harga {{ rupiah($item->harga) }}</h4>
             @if ($item->kategori == 'wisata' || $item->kategori == 'tubing')
-                <a href="{{ route('beli-tiket', $item->id) }}" class="btn btn-info ml-4 btn-beli-tiket @if ($item->status == 1)
+                <a href="{{ route('beli-tiket', $item->id) }}" class="btn @if ($item->status == 1)
+                    btn-danger
+                @else
+                    btn-primary
+                @endif ml-4 btn-beli-tiket @if ($item->status == 1)
                     disabled
                 @endif">Beli Tiket</a>
             @elseif ($item->kategori == 'camping' || $item->kategori == 'glamping')

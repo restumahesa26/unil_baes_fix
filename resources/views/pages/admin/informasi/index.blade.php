@@ -34,6 +34,7 @@
                     <thead>
                         <tr class="text-center">
                             <th>Informasi</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -47,6 +48,25 @@
                                     </button>
                             </td>
                             <td>
+                                @if ($item->status == 0)
+                                    <span class="badge bg-success">Aktif</span>
+                                @elseif ($item->status == 1)
+                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($item->status == 0)
+                                    <a href="{{ route('informasi.tidak-aktif', $item->id) }}" class="btn btn-warning">
+                                        Set Tidak Aktif
+                                    </a>
+                                @elseif ($item->status == 1)
+                                    <a href="{{ route('informasi.aktif', $item->id) }}" class="btn btn-info">
+                                        Set Aktif
+                                    </a>
+                                @endif
+                                <a href="{{ route('kirim-email-informasi', $item->id) }}" class="btn btn-success">
+                                    Kirim Email
+                                </a>
                                 <a href="{{ route('informasi.edit', $item->id) }}" class="btn btn-primary">
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>

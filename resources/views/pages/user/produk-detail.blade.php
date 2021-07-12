@@ -33,7 +33,7 @@
                         </div>
                         @endforeach
                     </div>
-                    <h5 style="top: 0; left:2%; z-index: 9999; position: absolute; color: #fff; background-color: #1977cc; padding: 5px; border-radius: 10px; font-size: 16px">Produk Habis</h5>
+                    <h5 style="top: 0; left:2%; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 16px">Produk Habis</h5>
                 </div>
                 <div class="col-lg-4 col-sm-12 mt-3">
                     <h5 style="color: #1977cc; font-size: 24px;">Detail Produk</h5>
@@ -43,7 +43,11 @@
                     <p style="font-size: 18px;">Stok : {{ $item->stok }}</p>
                     <div class="mt-3 d-flex justify-content-between align-items-center">
                         <h4>{{ rupiah($item->harga) }}</h4>
-                        <a href="{{ route('beli-produk', $item->id) }}" class="btn btn-primary btn-beli-tiket @if ($item->status == 1)
+                        <a href="{{ route('beli-produk', $item->id) }}" class="btn @if ($item->status == 1)
+                            btn-danger
+                        @else
+                            btn-primary
+                        @endif btn-beli-tiket @if ($item->status == 1)
                             disabled
                         @endif">Beli Produk</a>
                     </div>
