@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProdukTransaksi;
 use App\Models\User;
 use App\Models\Wisata;
 use App\Models\WisataTransaksi;
@@ -110,5 +111,23 @@ class ETicketController extends Controller
         $item->save();
 
         return redirect()->route('e-ticket.index');
+    }
+
+    public function printTiket($id)
+    {
+        $item = WisataTransaksi::findOrFail($id);
+
+        return view('pages.pdf.print', [
+            'item' => $item
+        ]);
+    }
+
+    public function printInvoice($id)
+    {
+        $item = ProdukTransaksi::findOrFail($id);
+
+        return view('pages.pdf.print-2', [
+            'item' => $item
+        ]);
     }
 }

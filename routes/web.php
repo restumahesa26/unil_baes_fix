@@ -161,6 +161,10 @@ Route::prefix('admin')
 
         Route::get('/e-ticket/bukti-bayar/{id}/', 'ETicketController@lihat_bukti_bayar')->name('e-ticket.bukti-bayar');
 
+        Route::get('/e-ticket/print/{id}/', 'ETicketController@printTiket')->name('e-ticket.print');
+
+        Route::get('/e-commerce/print/{id}/', 'ETicketController@printInvoice')->name('e-commerce.print');
+
         Route::get('/e-ticket/konfirmasi-pembayaran/{id}/', 'ETicketController@konfirmasi_bayar')->name('e-ticket.konfirmasi-pembayaran');
 
         Route::get('/e-ticket/batal-pembayaran/{id}/', 'ETicketController@batal_pembayaran')->name('e-ticket.batal-pembayaran');

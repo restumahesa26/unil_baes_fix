@@ -276,7 +276,7 @@ class TransaksiController extends Controller
         }elseif ($item->user->roles == 'USER') {
             $nama = $item->user->name;
         }
-        return $pdf->download('E-Ticket ' . $item->id . ' - ' . $item->wisata->nama_wisata . ' - ' . $nama . '.pdf');
+        return $pdf->stream('E-Ticket ' . $item->id . ' - ' . $item->wisata->nama_wisata . ' - ' . $nama . '.pdf');
     }
 
     public function pdf_sewa($id)
@@ -291,7 +291,7 @@ class TransaksiController extends Controller
         }elseif ($item->user->roles == 'USER') {
             $nama = $item->user->name;
         }
-        return $pdf->download('E-Ticket ' . $item->id . ' - ' . $item->wisata->nama_wisata . ' - ' . $nama . '.pdf');
+        return $pdf->stream('E-Ticket ' . $item->id . ' - ' . $item->wisata->nama_wisata . ' - ' . $nama . '.pdf');
     }
 
     public function pdf_invoice($id)
@@ -300,13 +300,13 @@ class TransaksiController extends Controller
 
         $pdf = PDF::loadview('pages.pdf.produk', [
             'item' => $item
-        ])->setPaper('a6', 'portrait');
+        ]);
         if ($item->user->roles == 'ADMIN') {
             $nama = 'Admin';
         }elseif ($item->user->roles == 'USER') {
             $nama = $item->user->name;
         }
-        return $pdf->download('E-Ticket ' . $item->id . ' - ' . $item->produk->nama_produk . ' - ' . $nama . '.pdf');
+        return $pdf->stream('E-Ticket ' . $item->id . ' - ' . $item->produk->nama_produk . ' - ' . $nama . '.pdf');
     }
 
 }

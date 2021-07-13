@@ -113,7 +113,10 @@
 
                                                 @elseif ($produk->status_pengiriman == 'dikirim')
                                                 <a href="{{ route('pdf-invoice', $produk->id) }}" class="btn btn-danger text-white">
-                                                    <i class="icofont-file-pdf"></i> Download Invoice
+                                                    <i class="icofont-file-pdf"></i>
+                                                </a>
+                                                <a href="{{ route('e-commerce.print', $produk->id) }}" class="btn btn-primary text-white" target="_blank">
+                                                    <i class="icofont-print"></i>
                                                 </a>
                                                 @endif
                                             </td>
@@ -191,7 +194,10 @@
                                                 </form>
                                                 @elseif ($wisata->status_bayar == 'sudah-bayar')
                                                 <a href="{{ route('pdf-tiket', $wisata->id) }}" class="btn btn-danger text-white">
-                                                    <i class="icofont-file-pdf"></i> Download E-Ticket
+                                                    <i class="icofont-file-pdf"></i>
+                                                </a>
+                                                <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                                    <i class="icofont-print"></i>
                                                 </a>
                                                 @elseif ($wisata->status_bayar == 'menunggu-konfirmasi')
                                                 <a href="https://api.whatsapp.com/send?phone=628117482512&text=Tolong%20konfirmasi%20pembayaran%20tiket%20wisata%20{{ $wisata->wisata->nama_wisata }}%20atas%20nama%20{{ Auth::user()->name }}.%0ATerima%20kasih%20..."
@@ -273,7 +279,10 @@
                                                 </form>
                                                 @elseif ($wisata->status_bayar == 'sudah-bayar')
                                                 <a href="{{ route('pdf-sewa', $wisata->id) }}" class="btn btn-danger text-white">
-                                                    <i class="icofont-file-pdf"></i> Download E-Ticket
+                                                    <i class="icofont-file-pdf"></i>
+                                                </a>
+                                                <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                                    <i class="icofont-print"></i>
                                                 </a>
                                                 @elseif ($wisata->status_bayar == 'menunggu-konfirmasi')
                                                 <a href="https://api.whatsapp.com/send?phone=628117482512&text=Tolong%20konfirmasi%20pembayaran%20tiket%20sewa%20{{ $wisata->wisata->nama_wisata }}%20atas%20nama%20{{ Auth::user()->name }}.%0ATerima%20kasih%20..."
@@ -354,7 +363,10 @@
                                                 </form>
                                                 @elseif ($wisata->status_bayar == 'sudah-bayar')
                                                 <a href="{{ route('pdf-sewa', $wisata->id) }}" class="btn btn-danger text-white">
-                                                    <i class="icofont-file-pdf"></i> Download E-Ticket
+                                                    <i class="icofont-file-pdf"></i>
+                                                </a>
+                                                <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                                    <i class="icofont-print"></i>
                                                 </a>
                                                 @elseif ($wisata->status_bayar == 'menunggu-konfirmasi')
                                                 <a href="https://api.whatsapp.com/send?phone=628117482512&text=Tolong%20konfirmasi%20pembayaran%20tiket%20sewa%20{{ $wisata->wisata->nama_wisata }}%20atas%20nama%20{{ Auth::user()->name }}.%0ATerima%20kasih%20..."
@@ -436,6 +448,9 @@
                                                 @elseif ($wisata->status_bayar == 'sudah-bayar')
                                                 <a href="{{ route('pdf-tiket', $wisata->id) }}" class="btn btn-danger text-white">
                                                     <i class="icofont-file-pdf"></i> Download E-Ticket
+                                                </a>
+                                                <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                                    <i class="icofont-print"></i>
                                                 </a>
                                                 @elseif ($wisata->status_bayar == 'menunggu-konfirmasi')
                                                 <a href="https://api.whatsapp.com/send?phone=628117482512&text=Tolong%20konfirmasi%20pembayaran%20tiket%20wisata%20{{ $wisata->wisata->nama_wisata }}%20atas%20nama%20{{ Auth::user()->name }}.%0ATerima%20kasih%20..."

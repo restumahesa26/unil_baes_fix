@@ -83,6 +83,9 @@
                                     <a href="{{ route('pdf-tiket', $wisata->id) }}" class="btn btn-danger text-white btn-download">
                                         <i class="fa fa-file-pdf"></i>
                                     </a>
+                                    <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                        <i class="fa fa-print"></i>
+                                    </a>
                                     <form action="{{ route('e-ticket.batal-tiket', $wisata->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -182,6 +185,9 @@
                                     </a>
                                     <a href="{{ route('pdf-sewa', $wisata->id) }}" class="btn btn-danger text-white btn-download">
                                         <i class="fa fa-file-pdf"></i>
+                                    </a>
+                                    <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                        <i class="fa fa-print"></i>
                                     </a>
                                     <form action="{{ route('e-ticket.batal-tiket', $wisata->id) }}" method="POST" class="d-inline">
                                         @csrf
@@ -283,6 +289,9 @@
                                     <a href="{{ route('pdf-sewa', $wisata->id) }}" class="btn btn-danger text-white btn-download">
                                         <i class="fa fa-file-pdf"></i>
                                     </a>
+                                    <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                        <i class="fa fa-print"></i>
+                                    </a>
                                     <form action="{{ route('e-ticket.batal-tiket', $wisata->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -380,6 +389,9 @@
                                     </a>
                                     <a href="{{ route('pdf-tiket', $wisata->id) }}" class="btn btn-danger text-white btn-download">
                                         <i class="fa fa-file-pdf"></i>
+                                    </a>
+                                    <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
+                                        <i class="fa fa-print"></i>
                                     </a>
                                     <form action="{{ route('e-ticket.batal-tiket', $wisata->id) }}" method="POST" class="d-inline">
                                         @csrf
