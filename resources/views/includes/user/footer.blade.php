@@ -10,7 +10,8 @@
                     <p>
                         Desa Rindu Hati<br>
                         Kecamatan Taba Penanjung<br>
-                        Kabupaten Bengkulu Tengah<br><br>
+                        Kabupaten Bengkulu Tengah<br>
+                        Provinsi Bengkulu<br><br>
                         <strong>Phone :</strong> <a href="tel:082375790919" style="text-decoration: none; color: inherit;">0823-7579-0919</a><br>
                         <strong>Email :</strong> <a href="mailto:rinduhati@gmail.com" style="text-decoration: none; color: inherit;">rinduhati@gmail.com</a><br>
                     </p>
@@ -40,11 +41,11 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Join Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    <h4>Subscribe</h4>
+                    <p>Dapatkan beragam info menarik terbaru tentang Desa Rindu Hati</p>
                     <form action="{{ route('subscribe-email') }}" method="POST">
                         @csrf
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" style="font-size: 14px;">
                         <input type="submit" value="Subscribe">
                     </form>
                 </div>
