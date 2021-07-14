@@ -12,8 +12,9 @@ class ECommerceController extends Controller
     public function index()
     {
         $items = ProdukTransaksi::orderBy('id', 'DESC')->get();
+        $produk = Produk::all();
         return view('pages.admin.e-commerce.index', [
-            'items' => $items
+            'items' => $items, 'produks' => $produk
         ]);
     }
 

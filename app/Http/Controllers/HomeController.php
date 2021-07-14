@@ -6,6 +6,7 @@ use App\Models\CeritaRakyat;
 use App\Models\EmailSubscribe;
 use App\Models\Galeri;
 use App\Models\Informasi;
+use App\Models\Kamus;
 use App\Models\KritikSaran;
 use App\Models\Produk;
 use App\Models\ProdukTransaksi;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HomeController extends Controller
 {
@@ -173,5 +175,17 @@ class HomeController extends Controller
         EmailSubscribe::create($data);
 
         return redirect()->route('home');
+    }
+
+    public function downloadKamus()
+    {
+        $items = Kamus::all();
+
+        $pdf = PDF::loadview('pages.pdf.kamus', [
+            'items' => $items
+        ])->setPaper('a4', 'portrait');
+
+        return $pdf->stream('E-book Kamus.pdf');
+
     }
 }

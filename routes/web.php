@@ -106,6 +106,8 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
     Route::patch('profile/update', 'HomeController@profileUpdate')->name('profile.update');
 
     Route::post('/subscribe-email', 'HomeController@subscribeEmail')->name('subscribe-email');
+
+    Route::get('/download-kamus', 'HomeController@downloadKamus')->name('kamus-download');
 });
 
 Route::prefix('admin')
@@ -252,5 +254,13 @@ Route::prefix('admin')
         Route::get('/wisata-show/filter', 'FilterController@wisata_filter')->name('wisata-filter');
 
         Route::get('/kirim-email-informasi/{id}/', 'EmailController@emailInformasi')->name('kirim-email-informasi');
+
+        Route::get('/e-ticket/print-laporan', 'FilterController@laporanETicket')->name('e-ticket-laporan');
+
+        Route::get('/e-commerce/print-laporan', 'FilterController@laporanECommerce')->name('e-commerce-laporan');
+
+        Route::get('/produk/print-laporan/print', 'FilterController@laporanProduk')->name('produk-laporan');
+
+        Route::get('/wisata/print-laporan/print', 'FilterController@laporanWisata')->name('wisata-laporan');
 
     });

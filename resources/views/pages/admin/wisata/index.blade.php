@@ -40,7 +40,8 @@
                     </div>
                 </div>
             </form>
-            <a href="{{ route('wisata.create') }}" class="btn btn-primary">Tambah Wisata</a>
+            <a href="{{ route('wisata.create') }}" class="btn btn-primary mt-2">Tambah Wisata</a>
+            <a href="#" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modal">Print Laporan</a>
         </div>
         <div class="card-body">
             <div class="table-responsive px-3 py-3">
@@ -104,6 +105,51 @@
                     @endforelse
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="transition: all .3s ease-in-out;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Print Laporan</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">
+                    Berdasarkan Kondisi Wisata
+                </h5>
+                <form action="{{ route('wisata-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <select name="kondisi" id="kondisi" class="form-control" required>
+                                <option value="">--Pilih Kondisi--</option>
+                                <option value="buka">Buka</option>
+                                <option value="tutup">Tutup</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary">Print Sesuai Kondisi</button>
+                        </div>
+                    </div>
+                </form>
+                <h5 class="text-center mt-3">
+                    Semua Wisata
+                </h5>
+                <form action="{{ route('wisata-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Semua Wisata</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="semua">
+                            <button type="submit" class="btn btn-primary">Print Semua Wisata</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

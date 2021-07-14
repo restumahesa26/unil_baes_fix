@@ -46,6 +46,7 @@
                         <a href="{{ route('e-commerce.index') }}" class="btn btn-info">Refresh</a>
                     </div>
                 </div>
+                <a href="#" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modal">Print Laporan</a>
             </form>
             <div class="table-responsive px-3 py-3 text-nowrap">
                 <table class="table table-bordered table-hover" id="table">
@@ -63,7 +64,13 @@
                     <tbody id="tbody">
                         @forelse ($items as $item)
                         <tr class="text-center">
-                            <td>{{ $item->user->name }}</td>
+                            <td>
+                                @if ($item->user->roles == 'ADMIN')
+                                        Admin
+                                @elseif ($item->user->roles == 'USER')
+                                    {{ $item->user->name }}
+                                @endif
+                            </td>
                             <td>{{ $item->produk->nama_produk }}</td>
                             <td>{{ $item->quantitas }}</td>
                             <td>{{ rupiah($item->total_harga) }}</td>
@@ -206,6 +213,79 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="transition: all .3s ease-in-out;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Print Laporan</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">
+                    Berdasarkan Tanggal Transaksi
+                </h5>
+                <form action="{{ route('e-commerce-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Semua Tanggal</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="semua">
+                            <button type="submit" class="btn btn-primary">Print Semua Tanggal</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="{{ route('e-commerce-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Tanggal Hari Ini</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="hari-ini">
+                            <button type="submit" class="btn btn-primary">Print Tanggal Hari Ini</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="{{ route('e-commerce-laporan') }}" target="_blank">
+                    <div class="form-group row mt-2">
+                        <div class="col-6 text-center">
+                            <label for="tanggal_awal">Tanggal Awal</label>
+                            <input type="date" name="tanggal_awal" id="tanggal_awal" class="form-control">
+                        </div>
+                        <div class="col-6 text-center">
+                            <label for="tanggal_akhir">Tanggal Akhir</label>
+                            <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Print Sesuai Tanggal</button>
+                        </div>
+                    </div>
+                </form>
+                <h5 class="text-center mt-3">
+                    Berdasarkan Produk
+                </h5>
+                <form action="{{ route('e-commerce-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <select name="produk" id="produk" class="form-control">
+                                <option value="">--Pilih Produk--</option>
+                                @foreach ($produks as $produk)
+                                    <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary">Print Sesuai Produk</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @foreach ($items as $ite)
 <div class="modal fade" id="modalPengiriman{{ $ite->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">

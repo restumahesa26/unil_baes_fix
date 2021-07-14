@@ -27,6 +27,91 @@
             </div>
         </form>
         <a href="{{ route('e-ticket.create') }}" class="btn btn-primary mt-2">Tambah Data E-Ticket</a>
+        <a href="#" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modal">Print Laporan</a>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="transition: all .3s ease-in-out;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Print Laporan</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">
+                    Berdasarkan Tanggal Pembelian
+                </h5>
+                <form action="{{ route('e-ticket-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Semua Tanggal</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="semua">
+                            <button type="submit" class="btn btn-primary">Print Semua Tanggal</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="{{ route('e-ticket-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Tanggal Hari Ini</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="hari-ini">
+                            <button type="submit" class="btn btn-primary">Print Tanggal Hari Ini</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="{{ route('e-ticket-laporan') }}" target="_blank">
+                    <div class="form-group row mt-2">
+                        <div class="col-6 text-center">
+                            <label for="tanggal_awal">Tanggal Awal</label>
+                            <input type="date" name="tanggal_awal" id="tanggal_awal" class="form-control">
+                        </div>
+                        <div class="col-6 text-center">
+                            <label for="tanggal_akhir">Tanggal Akhir</label>
+                            <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Print Sesuai Tanggal</button>
+                        </div>
+                    </div>
+                </form>
+                <h5 class="text-center mt-3">
+                    Berdasarkan Tanggal Tiket
+                </h5>
+                <form action="{{ route('e-ticket-laporan') }}" target="_blank">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="">Tanggal Hari Ini</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="filter" value="tiket-hari-ini">
+                            <button type="submit" class="btn btn-primary">Print Tiket Hari Ini</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="{{ route('e-ticket-laporan') }}" target="_blank">
+                    <div class="form-group row mt-2">
+                        <div class="col-6 text-center">
+                            <label for="tanggal_awal">Tanggal Awal</label>
+                            <input type="date" name="tiket_tanggal_awal" id="tanggal_awal" class="form-control">
+                        </div>
+                        <div class="col-6 text-center">
+                            <label for="tanggal_akhir">Tanggal Akhir</label>
+                            <input type="date" name="tiket_tanggal_akhir" id="tanggal_akhir" class="form-control">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button type="submit" class="btn btn-primary btn-block">Print Sesuai Tanggal</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

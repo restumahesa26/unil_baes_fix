@@ -29,6 +29,7 @@
                 <div class="col-md-6 col-lg-6 col-sm-6">
                     <label for="kata_kunci" class="col-form-label">Kata Kunci</label>
                     <input type="text" class="form-control col-10" id="kata_kunci" placeholder="Masukkan Kata Kunci ( bahasa indonesia )">
+                    <a href="{{ route('kamus-download') }}" class="btn btn-primary mt-2" target="_blank">Download E-book Kamus</a>
                 </div>
                 <div class="col-md-6 col-lg-6 col-sm-6">
                     <label for="kata_kunci" class="col-form-label">Hasil Terjemahan <span><sup  class="text-danger" id="pesan"></sup></span></label>

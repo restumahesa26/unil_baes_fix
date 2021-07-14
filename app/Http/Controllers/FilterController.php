@@ -54,13 +54,14 @@ class FilterController extends Controller
 
     public function ecommerceFilter(Request $request)
     {
+        $produk = Produk::all();
         if ($request->filter == null) {
             if ($request->filter_tanggal != null) {
                 $items = ProdukTransaksi::whereBetween('created_at', [$request->filter_tanggal, Carbon::now()->addDay()->toDateString()])->get();
 
                 if ($items->count() >= 1) {
                     return view('pages.admin.e-commerce.index', [
-                        'items' => $items
+                        'items' => $items, 'produks' => $produk
                     ]);
                 } else {
                     return redirect()->route('e-commerce.index')->with('data-kosong', 'Kosong');
@@ -91,7 +92,7 @@ class FilterController extends Controller
 
             if ($count >= 1) {
                 return view('pages.admin.e-commerce.index', [
-                    'items' => $items
+                    'items' => $items, 'produks' => $produk
                 ]);
             }else {
                 return redirect()->route('e-commerce.index')->with('data-kosong', 'Kosong');
@@ -143,6 +144,146 @@ class FilterController extends Controller
                 ]);
             }else {
                 return redirect()->route('wisata.index')->with('data-kosong', 'Kosong');
+            }
+        }
+    }
+
+    public function laporanETicket(Request $request)
+    {
+        if ($request->filter == 'semua') {
+            $items = WisataTransaksi::where('status_bayar', 'sudah-bayar')->get();
+
+            return view('pages.admin.laporan.e-ticket', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->filter == 'hari-ini') {
+            $items = WisataTransaksi::where('status_bayar', 'sudah-bayar')->whereDate('created_at', Carbon::now()->toDateString())->get();
+
+            return view('pages.admin.laporan.e-ticket', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->filter == 'tiket-hari-ini') {
+            $items = WisataTransaksi::where('status_bayar', 'sudah-bayar')->whereDate('tanggal_tiket', Carbon::now()->toDateString())->orWhereDate('tanggal_sewa', Carbon::now()->toDateString())->get();
+
+            return view('pages.admin.laporan.e-ticket', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->tanggal_awal || $request->tanggal_akhir) {
+            $tglTo = Carbon::parse($request->tanggal_akhir)->addDay()->toDateString();
+            $items = WisataTransaksi::all();
+            $items = $items->where('status_bayar', 'sudah-bayar')->whereBetween('created_at', [$request->tanggal_awal, $tglTo]);
+
+            return view('pages.admin.laporan.e-ticket', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->tiket_tanggal_awal || $request->tiket_tanggal_akhir) {
+            $tglTo = Carbon::parse($request->tiket_tanggal_akhir)->addDay()->toDateString();
+            $items = WisataTransaksi::where('status_bayar', 'sudah-bayar')->whereBetween('tanggal_tiket', [$request->tiket_tanggal_awal, $tglTo])->orWhereBetween('tanggal_sewa', [$request->tiket_tanggal_awal, $tglTo])->get();
+
+            return view('pages.admin.laporan.e-ticket', [
+                'items' => $items
+            ]);
+        }
+    }
+
+    public function laporanECommerce(Request $request)
+    {
+        if ($request->filter == 'semua') {
+            $items = ProdukTransaksi::where('status_bayar', 'sudah-bayar')->get();
+
+            return view('pages.admin.laporan.e-commerce', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->filter == 'hari-ini') {
+            $items = ProdukTransaksi::where('status_bayar', 'sudah-bayar')->whereDate('created_at', Carbon::now()->toDateString())->get();
+
+            return view('pages.admin.laporan.e-commerce', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->tanggal_awal || $request->tanggal_akhir) {
+            $tglTo = Carbon::parse($request->tanggal_akhir)->addDay()->toDateString();
+            $items = ProdukTransaksi::all();
+            $items = $items->where('status_bayar', 'sudah-bayar')->whereBetween('created_at', [$request->tanggal_awal, $tglTo]);
+
+            return view('pages.admin.laporan.e-commerce', [
+                'items' => $items
+            ]);
+        }
+
+        if ($request->produk) {
+            $items = ProdukTransaksi::where('produk_id', $request->produk)->get();
+            return view('pages.admin.laporan.e-commerce', [
+                'items' => $items
+            ]);
+        }
+    }
+
+    public function laporanProduk(Request $request)
+    {
+        if ($request->filter == 'semua') {
+            $items = Produk::all();
+            $text = '';
+
+            return view('pages.admin.laporan.produk-laporan', [
+                'items' => $items, 'text' => $text
+            ]);
+        }
+
+        if ($request->kondisi) {
+            if ($request->kondisi == 'tersedia') {
+                $items = Produk::where('status', 0)->get();
+                $text = 'Tersedia';
+                return view('pages.admin.laporan.produk-laporan', [
+                    'items' => $items, 'text' => $text
+                ]);
+            }
+            if ($request->kondisi == 'tidak-tersedia') {
+                $items = Produk::where('status', 1)->get();
+                $text = 'Tidak Tersedia';
+                return view('pages.admin.laporan.produk-laporan', [
+                    'items' => $items, 'text' => $text
+                ]);
+            }
+        }
+    }
+
+    public function laporanWisata(Request $request)
+    {
+        if ($request->filter == 'semua') {
+            $items = Wisata::all();
+            $text = '';
+
+            return view('pages.admin.laporan.wisata-laporan', [
+                'items' => $items, 'text' => $text
+            ]);
+        }
+
+        if ($request->kondisi) {
+            if ($request->kondisi == 'buka') {
+                $items = Wisata::where('status', 0)->get();
+                $text = 'Buka';
+                return view('pages.admin.laporan.wisata-laporan', [
+                    'items' => $items, 'text' => $text
+                ]);
+            }
+            if ($request->kondisi == 'tutup') {
+                $items = Wisata::where('status', 1)->get();
+                $text = 'Tutup';
+                return view('pages.admin.laporan.wisata-laporan', [
+                    'items' => $items, 'text' => $text
+                ]);
             }
         }
     }

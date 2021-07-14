@@ -33,21 +33,37 @@
                         </div>
                         @endforeach
                     </div>
-                    <h5 style="top: 0; left:2%; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 16px">Produk Habis</h5>
+                    @if ($item->status == 1)
+                        <h5 style="top: 0; left:2%; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 16px">Produk Habis</h5>
+                    @elseif ($item->stok < 1)
+                        <h5 style="top: 0; left:2%; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 16px">Produk Habis</h5>
+                    @endif
                 </div>
                 <div class="col-lg-4 col-sm-12 mt-3">
                     <h5 style="color: #1977cc; font-size: 24px;">Detail Produk</h5>
                     <p style="font-size: 20px; margin-bottom: 0px;">{{ $item->nama_produk }}</p>
                     <p style="font-size: 16px" class="text-gray-50">{{ $item->kategori }}</p>
                     <p style="font-size: 18px; overflow-wrap: break-word;">{{ $item->deskripsi }}</p>
-                    <p style="font-size: 18px;">Stok : {{ $item->stok }}</p>
+                    <p style="font-size: 18px;">Stok :
+                        @if ($item->stok < 1 || $item->status == 1)
+                            -
+                        @elseif ($item->stok > 0 || $item->status == 0)
+                            {{ $item->stok }}
+                        @endif
+                    </p>
                     <div class="mt-3 d-flex justify-content-between align-items-center">
                         <h4>{{ rupiah($item->harga) }}</h4>
-                        <a href="{{ route('beli-produk', $item->id) }}" class="btn @if ($item->status == 1)
+                        <a href="{{ route('beli-produk', $item->id) }}" class="btn
+                        @if ($item->status == 1)
+                            btn-danger
+                        @elseif ($item->stok < 1)
                             btn-danger
                         @else
                             btn-primary
-                        @endif btn-beli-tiket @if ($item->status == 1)
+                        @endif btn-beli-tiket
+                        @if ($item->status == 1)
+                            disabled
+                        @elseif ($item->stok < 1)
                             disabled
                         @endif">Beli Produk</a>
                     </div>

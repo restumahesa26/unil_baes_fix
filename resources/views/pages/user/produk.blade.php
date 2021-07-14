@@ -47,6 +47,8 @@
                         </div>
                         @if ($produk->status == 1)
                             <h5 style="top: 10%; left:0; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 14px">Produk Habis</h5>
+                        @elseif ($produk->stok < 1)
+                        <h5 style="top: 10%; left:0; z-index: 9999; position: absolute; color: #fff; background-color: #CD113B; padding: 5px; border-radius: 10px; font-size: 14px">Produk Habis</h5>
                         @endif
                     </div>
                 </div>
