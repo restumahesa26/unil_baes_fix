@@ -19,7 +19,7 @@
 
     <div class="container">
         <center>
-            <h2>Invoice</h2><br>
+            <h2>Invoice</h2>
             {!! QrCode::size(200)->generate($item->id . ' - ' . $item->user->id . ' - ' . $item->produk->nama_produk); !!}
             <h5 class="mt-3">Detail Pesanan</h5>
             <table class="table table-bordered mt-1 text-center">

@@ -15,7 +15,7 @@
 <body>
 
     <center>
-        <h2>E-Ticket</h2><br>
+        <h2>E-Ticket</h2>
         {!! QrCode::size(200)->generate($item->qr_code); !!}
         <p>Perlihatkan QR-Code Tiket ini kepada petugas penjaga</p>
     </center>
