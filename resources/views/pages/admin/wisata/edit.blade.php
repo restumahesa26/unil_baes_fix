@@ -157,6 +157,13 @@
                         <textarea name="story" id="story" cols="30" rows="10" class="ckeditor form-control">{!! $item->story !!}</textarea>
                     </div>
                     <div class="form-group">
+                        <label for="wisata_360">Wisata 360</label>
+                        <textarea name="wisata_360" id="wisata_360" cols="30" rows="10" class="form-control">{!! $item->wisata_360 !!}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube_url">Youtube URL</label>
+                        <textarea name="youtube_url" id="youtube_url" cols="30" rows="5" class="form-control">{!! $item->youtube_url !!}</textarea>
+                    <div class="form-group">
                         <label for="">Foto Wisata</label><br>
                         @foreach ($item->gambar_wisata as $gambar)
                             <img src="{{ asset('storage/images/gambar-wisata/'. $gambar->gambar_url) }}" alt="" class="img-thumbnail" style="width: 200px">

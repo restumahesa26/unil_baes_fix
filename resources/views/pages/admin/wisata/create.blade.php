@@ -137,6 +137,14 @@
                         <textarea name="story" id="story" cols="30" rows="10" class="ckeditor form-control"></textarea>
                     </div>
                     <div class="form-group">
+                        <label for="wisata_360">Wisata 360</label>
+                        <textarea name="wisata_360" id="wisata_360" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube_url">Youtube URL</label>
+                        <textarea name="youtube_url" id="youtube_url" cols="30" rows="5" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="foto_wisata">Foto Wisata</label>
                         <input type="file" name="image[]" class="form-control @error('image') is-invalid @enderror" id="foto_wisata" placeholder="Masukkan Foto Wisata" multiple required>
                     </div>

@@ -77,6 +77,8 @@ class WisataController extends Controller
                     $item->jam_tutup = $request->jam_tutup;
                     $item->kategori = $request->kategori;
                     $item->story = $request->story;
+                    $item->wisata_360 = $request->wisata_360;
+                    $item->youtube_url = $request->youtube_url;
                     $item->save();
 
                     foreach ($data as $wisata) {
@@ -164,6 +166,8 @@ class WisataController extends Controller
             $item->jam_tutup = $request->jam_tutup;
             $item->kategori = $request->kategori;
             $item->story = $request->story;
+            $item->wisata_360 = $request->wisata_360;
+            $item->youtube_url = $request->youtube_url;
             $item->save();
 
             if ($request->has('image')) {
