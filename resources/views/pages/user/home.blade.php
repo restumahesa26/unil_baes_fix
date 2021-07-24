@@ -394,6 +394,19 @@
                 src="https://maps.google.com/maps?q=unib&t=k&z=15&ie=UTF8&iwloc=&output=embed"
                 frameborder="0" allowfullscreen></iframe>
         </div>
+
+        <div class="text-center mt-3">
+            <h3>Supported By</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-3">
+                    <img src="{{ url('frontend/assets/img/kemdikbud.png') }}" alt="" width="250">
+                    <p>KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN <br> DIREKTORAT JENDERAL</p>
+                </div>
+                <div class="col-lg-3">
+                    <img src="{{ url('frontend/assets/img/kemahbudaya.png') }}" alt="" width="250">
+                </div>
+            </div>
+        </div>
     </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
