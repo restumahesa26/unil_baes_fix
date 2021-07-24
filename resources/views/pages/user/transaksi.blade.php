@@ -238,7 +238,6 @@
                                         <tr class="text-center">
                                             <th>No</th>
                                             <th>Nama Glamping</th>
-                                            <th>Waktu</th>
                                             <th>Tanggal</th>
                                             <th>Status Bayar</th>
                                             <th>Aksi</th>
@@ -255,7 +254,6 @@
                                         <tr class="text-center">
                                             <td>{{ $no }}</td>
                                             <td>{{ $wisata->wisata->nama_wisata }}</td>
-                                            <td>{{ $wisata->jam_sewa }}</td>
                                             <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
                                             <td>@if ($wisata->status_bayar == 'belum-bayar')
                                                 <span class="badge bg-danger text-white">Belum Bayar</span>
@@ -322,7 +320,6 @@
                                         <tr class="text-center">
                                             <th>No</th>
                                             <th>Nama Camping</th>
-                                            <th>Waktu</th>
                                             <th>Tanggal</th>
                                             <th>Status Bayar</th>
                                             <th>Aksi</th>
@@ -339,7 +336,6 @@
                                         <tr class="text-center">
                                             <td>{{ $no }}</td>
                                             <td>{{ $wisata->wisata->nama_wisata }}</td>
-                                            <td>{{ $wisata->jam_sewa }}</td>
                                             <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
                                             <td>@if ($wisata->status_bayar == 'belum-bayar')
                                                 <span class="badge bg-danger text-white">Belum Bayar</span>
@@ -447,7 +443,7 @@
                                                 </form>
                                                 @elseif ($wisata->status_bayar == 'sudah-bayar')
                                                 <a href="{{ route('pdf-tiket', $wisata->id) }}" class="btn btn-danger text-white">
-                                                    <i class="icofont-file-pdf"></i> Download E-Ticket
+                                                    <i class="icofont-file-pdf"></i>
                                                 </a>
                                                 <a href="{{ route('e-ticket.print', $wisata->id) }}" class="btn btn-primary text-white" target="_blank">
                                                     <i class="icofont-print"></i>

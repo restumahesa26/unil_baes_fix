@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
 
     Route::get('/total/harga-tiket', 'APIController@total_harga_tiket')->name('total-harga-tiket.api');
 
+    Route::get('/total/harga-sewa', 'APIController@total_harga_sewa')->name('total-harga-sewa.api');
+
     Route::get('/total/harga-produk', 'APIController@total_harga_produk')->name('total-harga-produk.api');
 
     Route::get('/cek-sewa/{id}/', 'APIController@cek_sewa')->name('cek-sewa.api');
@@ -232,6 +234,8 @@ Route::prefix('admin')
         Route::get('/user-admin/set-admin/{id}/', 'ProfileController@setAdmin')->name('profile.set-admin');
 
         Route::get('/user-admin/set-user/{id}/', 'ProfileController@setUser')->name('profile.set-user');
+
+        Route::get('/user-admin/set-petugas/{id}/', 'ProfileController@setPetugas')->name('profile.set-petugas');
 
         Route::delete('/user-admin/delete-user/{id}/', 'ProfileController@deleteUserAdmin')->name('profile.delete-user-admin');
 

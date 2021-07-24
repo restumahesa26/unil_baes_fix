@@ -37,7 +37,7 @@
                 @endforeach
             </div>
 
-            <section id="faq" class="faq section-bg" style="padding: 0; background-color: #fff;">
+            <section id="faq" class="faq section-bg mt-4" style="padding: 0; background-color: #fff;">
                 <div class="container">
                     <div class="faq-list">
                         <ul>
@@ -96,7 +96,11 @@
                                         @if ($item->jam_buka !== null)
                                         Dari Pukul {{ Carbon\Carbon::parse($item->jam_buka)->translatedFormat('H:i')  }} Sampai Pukul {{ Carbon\Carbon::parse($item->jam_tutup)->translatedFormat('H:i') }}
                                     @else
-                                        Dibuka pada waktu {{ $item->waktu }} hari
+                                        Dibuka  @if ($item->waktu == 'malam')
+                                            Malam
+                                            @elseif ($item->waktu == 'setiap-hari')
+                                            Setiap
+                                        @endif Hari
                                     @endif
                                     </p>
                                 </div>

@@ -22,25 +22,17 @@
     <!-- ======= Testimonials Section ======= -->
     <section id="beli-tiket" class="beli-tiket">
         <div class="container">
-            <p>Lengkapi form dibawah ini : </p>
+            <h5>Nama Wisata : {{ $item->nama_wisata }}</h5>
+            <p class="mt-3">Lengkapi form dibawah ini : </p>
             <form action="{{ route('bayar-sewa')}}" method="POST">
                 @csrf
                 <div class="form-row">
-                    <div class="form-group col">
-                        <label for="jam">Jam Sewa</label>
-                        <select name="jam" id="jam" class="form-control">
-                            <option value="">Pilih Jam</option>
-                            <option value="Pagi">Pagi</option>
-                            <option value="Siang">Siang</option>
-                            <option value="Malam">Malam</option>
-                        </select>
-                    </div>
-                    <div class="form-group col">
+                    <div class="form-group col-6">
                         <label for="tanggal">Tanggal Sewa</label>
                         <input type="date" class="form-control" placeholder="Masukkan Tanggal Tiket" id="tanggal" required name="tanggal">
                     </div>
                 </div>
-                <h4 id="test" class="text-danger"></h4>
+                <h5 id="test" class="text-danger"></h5>
                 <div class="row justify-content-end">
                     <div class="col-md-4 col-sm-12">
                         <div class="form-group row label-harga">
@@ -49,6 +41,7 @@
                             <label class="col-sm-4 col-form-label">Total Bayar</label>
                             <div class="col-sm-8">
                                 <label class="col-sm-12 col-form-label"><b id="total">{{ rupiah($item->harga) }}</b></label>
+                                <input type="hidden" id="harga" value="{{ $item->harga }}">
                                 <input type="hidden" name="total" id="total-value" value="{{ $item->harga }}">
                                 <input type="hidden" value="{{ $item->id }}" name="wisata_id">
                             </div>
@@ -64,8 +57,7 @@
 
 @push('addon-script')
     <script>
-        $("#tanggal, #jam").on("change", function() {
-            var jam = $('#jam').val();
+        $("#tanggal").on("change keyup", function() {
             var tanggal = $('#tanggal').val();
             if(tanggal.length === 0) {
 
@@ -74,17 +66,43 @@
                     url: `{{ route('cek-sewa.api', $item->id) }}`,
                     type: 'get',
                     data: {
-                        'jam' : jam,
                         'tanggal' : tanggal
                     },
                     dataType: 'json',
                     success: function (response) {
                         if (response != null) {
-                            document.getElementById('test').innerHTML = response.pesan;
                             if (response.pesan == 'Bisa Dibooking') {
                                 document.getElementById('bayar').disabled = false;
+                                document.getElementById('test').innerHTML = "";
                             } else {
                                 document.getElementById('bayar').disabled = true;
+                                document.getElementById('test').innerHTML = response.pesan;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        $("#tanggal").on("change keyup", function() {
+            var tanggal = $('#tanggal').val();
+            if(tanggal.length === 0) {
+
+            }else {
+                $.ajax({
+                    url: `{{ route('cek-tanggal.api') }}`,
+                    type: 'get',
+                    data: {
+                        'tanggal' : tanggal
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response != null) {
+                            if (response.pesan == '') {
+
+                            } else {
+                                document.getElementById('bayar').disabled = true;
+                                document.getElementById('test').innerHTML = response.pesan;
                             }
                         }
                     }

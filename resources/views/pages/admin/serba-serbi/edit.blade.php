@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Serba-Serbi Edit Data</title>
+    <title>Serba-Serbi - Edit Data</title>
 @endsection
 
 @section('content')

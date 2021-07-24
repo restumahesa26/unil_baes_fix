@@ -431,6 +431,66 @@ aria-hidden="true">
         </script>
     @endif
 
+    @if (Session::get('success-konfirmasi'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Berhasil Mengkonfirmasi Pembayaran'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('batal-pembayaran'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Pembayaran Berhasil Dibatalkan'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('batal-pembayaran-ongkir'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Pembayaran Ongkir Berhasil Dibatalkan'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('batal-tiket'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Transaksi Berhasil Dibatalkan'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('success-set-pengiriman'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Berhasil Set Pengiriman'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('success-kirim'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Berhasil Mengiriman Pesanan'
+        })
+    </script>
+    @endif
+
     <script>
         $(document).ready( function () {
             $('#table').DataTable({

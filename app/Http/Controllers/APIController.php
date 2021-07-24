@@ -23,15 +23,24 @@ class APIController extends Controller
 
     public function cek_sewa(Request $request, $id)
     {
-        $jam = $request->jam;
         $tanggal = $request->tanggal;
 
-        $check = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->where('jam_sewa', $jam)->first();
+        $check = Wisata::findOrFail($id);
+        $check2 = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->first();
+        $count = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->count();
 
-        if ($check == null) {
-            return response()->json(['pesan'=>'Bisa Dibooking']);
-        }else {
-            return response()->json(['pesan'=>'Mohon Maaf.. Sudah Tidak Bisa Dibooking']);
+        if ($check->stok != NULL) {
+            if ($count < $check->stok) {
+                return response()->json(['pesan'=>'Bisa Dibooking']);
+            }else {
+                return response()->json(['pesan'=>'Mohon Maaf.. Sudah Tidak Bisa Dibooking']);
+            }
+        } else {
+            if ($check2 == null) {
+                return response()->json(['pesan'=>'Bisa Dibooking']);
+            }else {
+                return response()->json(['pesan'=>'Mohon Maaf.. Sudah Tidak Bisa Dibooking']);
+            }
         }
     }
 

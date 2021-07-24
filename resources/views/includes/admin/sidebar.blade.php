@@ -19,6 +19,7 @@
                     </a>
                 </li>
 
+                @if (Auth::user()->roles == 'ADMIN')
                 <li class="sidebar-item {{ Request::routeIs('produk.index') || Request::routeIs('produk.create') || Request::routeIs('produk.edit') || Request::routeIs('wisata.index') || Request::routeIs('wisata.create') || Request::routeIs('wisata.edit') || Request::routeIs('cerita-rakyat.index') || Request::routeIs('cerita-rakyat.create') || Request::routeIs('cerita-rakyat.edit') || Request::routeIs('kamus.index') || Request::routeIs('kamus.create') || Request::routeIs('kamus.edit') || Request::routeIs('rekening.index') || Request::routeIs('rekening.create') || Request::routeIs('rekening.edit') || Request::routeIs('produk-filter') || Request::routeIs('wisata-filter') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
@@ -84,6 +85,11 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if (Auth::user()->roles == 'ADMIN' || Auth::user()->roles == 'PETUGAS')
+
+                @endif
 
                 <li class="sidebar-item {{ Request::routeIs('qr-code.index')  ? 'active' : '' }}">
                     <a href="{{ route('qr-code.index') }}" class='sidebar-link'>
@@ -92,12 +98,14 @@
                     </a>
                 </li>
 
+                @if (Auth::user()->roles == 'ADMIN')
                 <li class="sidebar-item {{ Request::routeIs('profile.index')  ? 'active' : '' }}">
                     <a href="{{ route('profile.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-lines-fill"></i>
                         <span>User & Admin</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="sidebar-item">
                     <a href="{{ route('profile.show') }}" class='sidebar-link'>

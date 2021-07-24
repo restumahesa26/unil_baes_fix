@@ -144,6 +144,27 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="waktu">Jenis Waktu</label>
+                        <select name="waktu" id="waktu" class="form-control" required>
+                            <option value="">Pilih Waktu</option>
+                            <option value="malam" @if ($item->waktu == 'malam')
+                                selected
+                            @endif>Malam</option>
+                            <option value="setiap-hari" @if ($item->waktu == 'setiap-hari')
+                                selected
+                            @endif>Hari</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">Stok</label>
+                        <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Masukkan Stok" value="{{ $item->stok }}" min="0" required>
+                        @error('stok')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="harga">Harga</label>
                         <input type="number" name="harga" class="form-control @error('harga') is-invalid @enderror" id="harga" placeholder="Masukkan Harga Wisata" value="{{ $item->harga }}" min="0" required>
                         @error('harga')

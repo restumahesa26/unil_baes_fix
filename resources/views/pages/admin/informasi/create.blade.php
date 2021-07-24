@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Serba-Serbi - Tambah Data</title>
+    <title>Informasi - Tambah Data</title>
 @endsection
 
 @section('content')
@@ -32,7 +32,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="informasi">Informasi</label>
-                        <input name="informasi" id="informasi" class="ckeditor form-control @error('informasi') is-invalid @enderror" value="{{ old('informasi') }}">
+                        <input name="informasi" id="informasi" class="form-control @error('informasi') is-invalid @enderror" value="{{ old('informasi') }}" placeholder="Masukkan Informasi">
                         @error('informasi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

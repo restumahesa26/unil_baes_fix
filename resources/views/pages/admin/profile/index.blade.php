@@ -28,7 +28,7 @@
             <div class="card-body">
                 <!-- Table with outer spacing -->
                 <div class="table-responsive">
-                    <table class="table table-lg" id="table1">
+                    <table class="table table-lg text-nowrap" id="table1">
                         <thead>
                             <tr class="">
                                 <th>Nama</th>
@@ -53,9 +53,22 @@
                                             <a href="{{ route('profile.set-user', $item->id) }}" class="btn btn-primary">
                                                 Set User
                                             </a>
-                                        @else
-                                            <a href="{{ route('profile.set-admin', $item->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('profile.set-petugas', $item->id) }}" class="btn btn-secondary">
+                                                Set Petugas
+                                            </a>
+                                        @elseif ($item->roles === 'PETUGAS')
+                                            <a href="{{ route('profile.set-user', $item->id) }}" class="btn btn-primary">
+                                                Set User
+                                            </a>
+                                            <a href="{{ route('profile.set-admin', $item->id) }}" class="btn btn-success">
                                                 Set Admin
+                                            </a>
+                                        @else
+                                            <a href="{{ route('profile.set-admin', $item->id) }}" class="btn btn-success">
+                                                Set Admin
+                                            </a>
+                                            <a href="{{ route('profile.set-petugas', $item->id) }}" class="btn btn-secondary">
+                                                Set Petugas
                                             </a>
                                         @endif
                                         <form action="{{ route('profile.delete-user-admin', $item->id) }}" method="POST" class="d-inline">

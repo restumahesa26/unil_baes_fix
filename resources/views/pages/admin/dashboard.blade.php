@@ -5,10 +5,18 @@
 @endsection
 
 @section('content')
+@if (Auth::user()->roles == 'ADMIN')
 <div class="page-heading">
     <h3>Dashboard</h3>
 </div>
+@else
+<div class="page-heading">
+    <h3>Profile</h3>
+</div>
+@endif
+
 <div class="page-content">
+    @if (Auth::user()->roles == 'ADMIN')
     <section class="row">
         <div class="col-12 col-lg-12">
             <div class="row">
@@ -214,10 +222,15 @@
             </div>
         </div>
     </section>
+    @endif
 </div>
+@if (Auth::user()->roles == 'ADMIN')
 <div class="page-heading">
     <h3>Profile</h3>
 </div>
+@else
+
+@endif
 <div class="page-content">
     <div class="row" id="basic-table">
         <div class="col-12">

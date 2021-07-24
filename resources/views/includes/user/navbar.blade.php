@@ -16,6 +16,9 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
+        @php
+            $count = App\Models\WisataTransaksi::where('status_bayar', 'belum-bayar')->count() + App\Models\ProdukTransaksi::where('status_bayar', 'belum-bayar')->orWhere('status_pengiriman', 'bayar-ongkir')->count();
+        @endphp
 
         <h1 class="logo mr-auto"><a href="#">RinduHati</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
@@ -44,7 +47,11 @@
                 @endif"><a href="{{ route('profile.edit') }}">Profile</a></li>
                     <li class="@if (Route::is('transaksi') || Route::is('bayar-tiket-show'))
                     active
-                @endif"><a href="{{ route('transaksi') }}">Transaksi</a></li>
+                @endif"><a href="{{ route('transaksi') }}">Transaksi<span class="text-danger text-bold" style="font-size: 16px; font-weight: bolder;"><sup>@if ($count == 0)
+
+                @else
+                    {{ $count }}
+                @endif</sup></span></a> </li>
                 @endif
                 @if (Auth::user())
                 @if (Auth::user()->roles == 'ADMIN')

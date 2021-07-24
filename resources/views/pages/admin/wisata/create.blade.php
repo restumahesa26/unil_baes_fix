@@ -107,21 +107,33 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="waktu">Waktu</label>
-                        <select name="waktu" id="waktu" class="form-control">
-                            <option value="">Pilih Waktu</option>
-                            <option value="pagi">Pagi</option>
-                            <option value="siang">Siang</option>
-                            <option value="malam">Malam</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="jam_buka">Jam Buka</label>
                         <input type="time" name="jam_buka" class="form-control" id="jam_buka" placeholder="Masukkan Jam Buka Wisata" value="{{ old('jam_buka') }}">
                     </div>
                     <div class="form-group">
                         <label for="jam_tutup">Jam Tutup</label>
                         <input type="time" name="jam_tutup" class="form-control" id="jam_buka" placeholder="Masukkan Jam Tutup Wisata" value="{{ old('jam_tutup') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="waktu">Jenis Waktu</label>
+                        <select name="waktu" id="waktu" class="form-control" required>
+                            <option value="">Pilih Waktu</option>
+                            <option value="malam" @if (old('waktu') == 'Malam')
+                                selected
+                            @endif>Malam</option>
+                            <option value="setiap-hari" @if (old('waktu') == 'Hari')
+                                selected
+                            @endif>Hari</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">Stok</label>
+                        <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="Masukkan Stok" value="{{ old('stok') }}" min="0" required>
+                        @error('stok')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga</label>

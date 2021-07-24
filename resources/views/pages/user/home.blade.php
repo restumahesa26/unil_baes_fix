@@ -334,7 +334,11 @@
                 @foreach ($reviews as $revi)
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="{{ url('frontend/assets/img/testimonials/testimonials-1.png') }}" class="testimonial-img" alt="">
+                            @if ($revi->user->jenis_kelamin === 'Laki-Laki')
+                                <img src="{{ url('backend/assets/images/faces/2.jpg') }}" class="testimonial-img" alt="">
+                            @elseif ($revi->user->jenis_kelamin === 'Perempuan')
+                                <img src="{{ url('backend/assets/images/faces/3.jpg') }}" class="testimonial-img" alt="">
+                            @endif
                             <h3>{{ $revi->user->name }}</h3>
                             <h4 style="text-transform: capitalize">{{ $revi->user->pekerjaan }}</h4>
                             <p>
@@ -414,6 +418,16 @@
         icon: 'success',
         title: 'Terimakasih',
         text: 'Review Anda Berhasil Dikirim'
+    })
+</script>
+@endif
+
+@if (Session::get('success-subscribe'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Terimakasih',
+        text: 'Berhasil Subscribe Website'
     })
 </script>
 @endif

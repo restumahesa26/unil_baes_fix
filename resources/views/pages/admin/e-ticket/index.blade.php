@@ -235,7 +235,6 @@
                             <tr class="text-center">
                                 <th>Nama</th>
                                 <th>Camping</th>
-                                <th>Jam</th>
                                 <th>Tanggal</th>
                                 <th>Status Bayar</th>
                                 <th>Aksi</th>
@@ -252,7 +251,6 @@
                                     @endif
                                 </td>
                                 <td>{{ $wisata->wisata->nama_wisata }}</td>
-                                <td>{{ $wisata->jam_sewa }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
                                 <td>@if ($wisata->status_bayar == 'belum-bayar')
                                     <span class="badge bg-danger">Belum Bayar</span>
@@ -338,7 +336,6 @@
                             <tr class="text-center">
                                 <th>Nama</th>
                                 <th>Glamping</th>
-                                <th>Jam</th>
                                 <th>Tanggal</th>
                                 <th>Status Bayar</th>
                                 <th>Aksi</th>
@@ -355,7 +352,6 @@
                                     @endif
                                 </td>
                                 <td>{{ $wisata->wisata->nama_wisata }}</td>
-                                <td>{{ $wisata->jam_sewa }}</td>
                                 <td>{{ Carbon\Carbon::parse($wisata->tanggal_sewa)->translatedFormat('l, d F Y') }}</td>
                                 <td>@if ($wisata->status_bayar == 'belum-bayar')
                                     <span class="badge bg-danger">Belum Bayar</span>
@@ -452,6 +448,8 @@
                                 <td>
                                     @if ($wisata->user->roles == 'ADMIN')
                                         Admin
+                                    @elseif ($wisata->user->roles == 'PETUGAS')
+                                        Petugas
                                     @elseif ($wisata->user->roles == 'USER')
                                         {{ $wisata->user->name }}
                                     @endif
@@ -539,6 +537,46 @@
         <script>
             Swal.fire('Pilih Filter Terlebih Dahulu');
         </script>
+    @endif
+
+    @if (Session::get('success-konfirmasi'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Berhasil Mengkonfirmasi Pembayaran'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('success-tambah'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Berhasil Menambah Transaksi'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('batal-pembayaran'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Pembayaran Berhasil Dibatalkan'
+        })
+    </script>
+    @endif
+
+    @if (Session::get('batal-produk'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: 'Transaksi Berhasil Dibatalkan'
+        })
+    </script>
     @endif
 
     <script>

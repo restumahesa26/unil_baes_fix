@@ -26,8 +26,8 @@ class WisataRequest extends FormRequest
         return [
             'nama_wisata' => 'required|string|min:3|max:255',
             'deskripsi' => 'required|string|min:3',
-            'ketentuan' => 'required|string|min:3',
-            'fasilitas' => 'required|string|min:3|max:255',
+            'ketentuan' => 'required|string',
+            'fasilitas' => 'required|string|max:255',
             'harga' => 'required|numeric',
             'kategori' => 'required|string|min:3|max:255'
         ];
@@ -42,9 +42,7 @@ class WisataRequest extends FormRequest
             'deskripsi.required' => 'Deskripsi tidak boleh kosong',
             'deskripsi.min' => 'Deskripsi tidak boleh kurang dari 3 huruf',
             'ketentuan.required' => 'Ketentuan tidak boleh kosong',
-            'ketentuan.min' => 'Ketentuan tidak boleh kurang dari 3 huruf',
             'fasilitas.required' => 'Fasilitas tidak boleh kosong',
-            'fasilitas.min' => 'Fasilitas tidak boleh kurang dari 3 huruf',
             'fasilitas.max' => 'Fasilitas tidak boleh lebih dari 255 huruf',
             'harga.required' => 'Berat tidak boleh kosong',
             'harga.numeric' => 'Berat hanya berupa angka',

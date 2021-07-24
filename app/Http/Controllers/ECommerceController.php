@@ -36,7 +36,7 @@ class ECommerceController extends Controller
         $item->bukti_bayar = NULL;
         $item->save();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('batal-pembayaran', 'Sukses');
     }
 
     public function batal_pembayaran_ongkir($id)
@@ -48,7 +48,7 @@ class ECommerceController extends Controller
         $item->bukti_bayar_2 = NULL;
         $item->save();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('batal-pembayaran-ongkir', 'Sukses');
     }
 
     public function metode_pengiriman($id)
@@ -67,7 +67,7 @@ class ECommerceController extends Controller
         $item->status_bayar = 'sudah-bayar';
         $item->save();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('success-konfirmasi', 'Sukses');
     }
 
     public function set_pengiriman(Request $request, $id)
@@ -78,7 +78,7 @@ class ECommerceController extends Controller
         $item->status_pengiriman = 'bayar-ongkir';
         $item->save();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('success-set-pengiriman', 'Sukses');
     }
 
     public function lihat_ongkos_kirim($id)
@@ -97,7 +97,7 @@ class ECommerceController extends Controller
         $item->kode_resi = $request->kode_resi;
         $item->save();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('success-kirim', 'Sukses');
     }
 
     public function deleteECommerce($id)
@@ -113,6 +113,6 @@ class ECommerceController extends Controller
         $produk->save();
         $item->delete();
 
-        return redirect()->route('e-commerce.index');
+        return redirect()->route('e-commerce.index')->with('batal-produk', 'Sukses');
     }
 }

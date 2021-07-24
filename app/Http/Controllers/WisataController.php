@@ -79,6 +79,7 @@ class WisataController extends Controller
                     $item->story = $request->story;
                     $item->wisata_360 = $request->wisata_360;
                     $item->youtube_url = $request->youtube_url;
+                    $item->stok = $request->stok;
                     $item->save();
 
                     foreach ($data as $wisata) {
@@ -168,6 +169,7 @@ class WisataController extends Controller
             $item->story = $request->story;
             $item->wisata_360 = $request->wisata_360;
             $item->youtube_url = $request->youtube_url;
+            $item->stok = $request->stok;
             $item->save();
 
             if ($request->has('image')) {

@@ -50,6 +50,7 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Nama Wisata</th>
+                            <th>Stok</th>
                             <th>Harga</th>
                             <th>Status</th>
                             <th>Aksi</th>
@@ -66,6 +67,13 @@
                         <tr class="text-center">
                             <td>{{ $no }}</td>
                             <td>{{ $item->nama_wisata }}</td>
+                            <td>
+                                @if ($item->stok != NULL)
+                                    {{ $item->stok }}
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ rupiah($item->harga) }}</td>
                             <td>
                                 @if ($item->status == 0)
@@ -75,6 +83,9 @@
                                 @endif
                             </td>
                             <td>
+                                <a href="{{ route('wisata.edit', $item->id) }}" class="btn btn-primary">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
                                 @if ($item->status == 0)
                                     <a href="{{ route('wisata.tutup', $item->id) }}" class="btn btn-warning">
                                         <i class="bi bi-dash-circle"></i>
@@ -84,9 +95,6 @@
                                     <i class="bi bi-check-square"></i>
                                 </a>
                                 @endif
-                                <a href="{{ route('wisata.edit', $item->id) }}" class="btn btn-primary">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </a>
                                 <form action="{{ route('wisata.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')

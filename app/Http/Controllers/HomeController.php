@@ -170,11 +170,15 @@ class HomeController extends Controller
 
     public function subscribeEmail(Request $request)
     {
+        $request->validate([
+            'email' => 'required|unique:email_subscribes'
+        ]);
+
         $data = $request->except(['_token']);
 
         EmailSubscribe::create($data);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success-subscribe', 'Sukses');
     }
 
     public function downloadKamus()

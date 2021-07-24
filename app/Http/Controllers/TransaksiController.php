@@ -99,20 +99,38 @@ class TransaksiController extends Controller
         $checkWisata = Wisata::where('id', $request->wisata_id)->first();
 
         if ($checkWisata->status == 0) {
-            $check = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->where('jam_sewa', $jam)->first();
+            $check = Wisata::findOrFail($request->wisata_id);
+            $check2 = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->first();
+            $count = WisataTransaksi::where('wisata_id', $id)->where('tanggal_sewa', $tanggal)->count();
 
-            if ($check == null) {
-                $item = new WisataTransaksi();
-                $item->wisata_id = $request->wisata_id;
-                $item->user_id = Auth::user()->id;
-                $item->jam_sewa = $jam;
-                $item->total_bayar = $total;
-                $item->tanggal_sewa = $tanggal;
-                $item->save();
+            if ($check->stok != NULL) {
+                if ($check->stok >= 1 && $count < $check->stok) {
+                    $item = new WisataTransaksi();
+                    $item->wisata_id = $request->wisata_id;
+                    $item->user_id = Auth::user()->id;
+                    $item->jam_sewa = $jam;
+                    $item->total_bayar = $total;
+                    $item->tanggal_sewa = $tanggal;
+                    $item->save();
 
-                return redirect()->route('transaksi')->with('bayar-sewa', 'Bayar Sewa');
-            }else {
-                return redirect()->back();
+                    return redirect()->route('transaksi')->with('bayar-sewa', 'Bayar Sewa');
+                }else {
+                    return redirect()->back();
+                }
+            } else {
+                if ($check2 == null) {
+                    $item = new WisataTransaksi();
+                    $item->wisata_id = $request->wisata_id;
+                    $item->user_id = Auth::user()->id;
+                    $item->jam_sewa = $jam;
+                    $item->total_bayar = $total;
+                    $item->tanggal_sewa = $tanggal;
+                    $item->save();
+
+                    return redirect()->route('transaksi')->with('bayar-sewa', 'Bayar Sewa');
+                }else {
+                    return redirect()->back();
+                }
             }
         } else {
             return redirect()->back();

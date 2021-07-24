@@ -77,6 +77,9 @@
                                 @endif
                             </td>
                             <td>
+                                <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-primary">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
                                 @if ($item->status == 0)
                                     <a href="{{ route('produk.tidak-tersedia', $item->id) }}" class="btn btn-warning">
                                         <i class="bi bi-dash-circle"></i>
@@ -86,9 +89,6 @@
                                     <i class="bi bi-check-square"></i>
                                 </a>
                                 @endif
-                                <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-primary">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </a>
                                 <form action="{{ route('produk.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')

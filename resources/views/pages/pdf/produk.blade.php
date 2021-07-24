@@ -23,10 +23,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $item->user->name }} <br> ( 0{{ $item->user->no_hp }} ) </td>
-                    <td>{{ $item->produk->nama_produk }}</td>
-                    <td>{{ $item->quantitas }}</td>
-                    <td>{{ rupiah($item->total_harga) }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->user->name }} <br> ( 0{{ $item->user->no_hp }} ) </td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->produk->nama_produk }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->quantitas }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ rupiah($item->total_harga) }}</td>
                 </tr>
             </tbody>
         </table>
@@ -44,10 +44,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $item->kelurahan->name }}</td>
-                    <td>{{ $item->kecamatan->name }}</td>
-                    <td>{{ $item->kota->name }}</td>
-                    <td>{{ $item->provinsi->name }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->kelurahan->name }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->kecamatan->name }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->kota->name }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ $item->provinsi->name }}</td>
                 </tr>
             </tbody>
         </table>

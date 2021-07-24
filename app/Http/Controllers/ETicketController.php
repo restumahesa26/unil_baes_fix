@@ -49,7 +49,7 @@ class ETicketController extends Controller
         $item->qr_code = $qr_code;
         $item->save();
 
-        return redirect()->route('e-ticket.index');
+        return redirect()->route('e-ticket.index')->with('success-konfirmasi', 'Sukses');
     }
 
     public function batal_pembayaran($id)
@@ -61,7 +61,7 @@ class ETicketController extends Controller
         $item->bukti_bayar = NULL;
         $item->save();
 
-        return redirect()->route('e-ticket.index');
+        return redirect()->route('e-ticket.index')->with('batal-pembayaran', 'Sukses');
     }
 
     public function batal_tiket($id)
@@ -71,7 +71,7 @@ class ETicketController extends Controller
         Storage::delete($filename);
         $item->delete();
 
-        return redirect()->route('e-ticket.index');
+        return redirect()->route('e-ticket.index')->with('batal-tiket', 'Sukses');
     }
 
     public function tambahData()
@@ -110,7 +110,7 @@ class ETicketController extends Controller
         $item->qr_code = $qr_code;
         $item->save();
 
-        return redirect()->route('e-ticket.index');
+        return redirect()->route('e-ticket.index')->with('success-tambah', 'Sukses');
     }
 
     public function printTiket($id)

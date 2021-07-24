@@ -36,6 +36,15 @@ class ProfileController extends Controller
         return redirect()->route('profile.index');
     }
 
+    public function setPetugas($id)
+    {
+        $item = User::findOrFail($id);
+        $item->roles = 'PETUGAS';
+        $item->save();
+
+        return redirect()->route('profile.index');
+    }
+
     public function deleteUserAdmin($id)
     {
         $item = User::findOrFail($id);
