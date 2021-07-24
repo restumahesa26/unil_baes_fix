@@ -48,6 +48,11 @@
                         <input type="email" name="email" class="form-control" style="font-size: 14px;">
                         <input type="submit" value="Subscribe">
                     </form>
+                    <p class="mt-2">
+                        Supported By :
+                        <img src="{{ url('frontend/assets/img/kemdikbud.png') }}" alt="" width="70">
+                        <img src="{{ url('frontend/assets/img/kemahbudaya.png') }}" alt="" width="70">
+                    </p>
                 </div>
 
             </div>
