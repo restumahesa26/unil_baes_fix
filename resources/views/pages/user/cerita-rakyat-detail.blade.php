@@ -24,6 +24,12 @@
                 <h3>{{ $item->judul }}</h3>
                 <span><strong>Diposting : {{ Carbon\Carbon::parse($item->created_at)->translatedFormat('l, d F Y') }}</strong> </span>
             </div>
+            <div class="row justify-content-center mt-2">
+                <div class="col-lg-8">
+                    <h5 class="text-center">Deskripsi</h5>
+                    <p>{{ $item->deskripsi }}</p>
+                </div>
+            </div>
             <div class="text-center">
                 <img src="{{ asset('storage/images/gambar-cerita/'. $item->gambar_cerita) }}" alt="" class="mt-4" style="width: 800px">
             </div>
