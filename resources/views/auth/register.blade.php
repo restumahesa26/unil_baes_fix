@@ -32,7 +32,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="no_hp" value="{{ __('No Handphone') }}" />
-                <x-jet-input id="no_hp" class="block mt-1 w-full" type="no_hp" name="no_hp" :value="old('no_hp')" required />
+                <x-jet-input id="no_hp" class="block mt-1 w-full" type="number" name="no_hp" :value="old('no_hp')" required />
             </div>
 
             <div class="mt-4">
