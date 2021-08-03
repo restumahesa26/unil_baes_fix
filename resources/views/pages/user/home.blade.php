@@ -135,7 +135,10 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="icofont-earth"></i>
-                            <span data-toggle="counter-up">{{ $referensis->luas_desa }}</span>
+                            <span data-toggle="counter-up">@if ($referensis->luas_desa != NULL)
+                                {{ $referensis->luas_desa }}
+                            @endif
+                                </span>
                             <p>Luas Desa ( Km <sup>2</sup> )</p>
                         </div>
                     </div>
@@ -143,7 +146,10 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                         <div class="count-box">
                             <i class="icofont-users-alt-5"></i>
-                            <span data-toggle="counter-up">{{ $referensis->jml_penduduk }}</span>
+                            <span data-toggle="counter-up">@if ($referensis->jml_penduduk != NULL)
+                                {{ $referensis->jml_penduduk }}
+                            @endif
+                                </span>
                             <p>Jumlah Penduduk</p>
                         </div>
                     </div>
@@ -159,7 +165,10 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="icofont-long-drive"></i>
-                            <span data-toggle="counter-up">{{ $referensis->jarak_kecamatan }}</span>
+                            <span data-toggle="counter-up">@if ($referensis->jarak_kecamatan != NULL)
+                                {{ $referensis->jarak_kecamatan }}
+                            @endif
+                                </span>
                             <p>Jarak Ke Kecamatan ( Km )</p>
                         </div>
                     </div>
