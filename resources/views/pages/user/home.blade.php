@@ -135,8 +135,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="icofont-earth"></i>
-                            <span data-toggle="counter-up"
-                                </span>
+                            <span data-toggle="counter-up"></span>
                             <p>Luas Desa ( Km <sup>2</sup> )</p>
                         </div>
                     </div>
