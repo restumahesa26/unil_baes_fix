@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'pekerjaan' => 'Mahasiswa',
             'jenis_kelamin' => 'Laki-Laki',
-            'no_hp' => '08117482512'
+            'no_hp' => '08117482512',
+            'roles' => 'ADMIN'
         ]);
     }
 }
