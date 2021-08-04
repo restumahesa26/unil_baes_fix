@@ -19,7 +19,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $items = Produk::all();
+        $items = Produk::select(['id', 'nama_produk', 'stok', 'harga', 'status'])->get();
         return view('pages.admin.produk.index', [
             'items' => $items
         ]);

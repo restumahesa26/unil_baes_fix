@@ -33,10 +33,10 @@ class HomeController extends Controller
         }
         $referensi = Referensi::first();
         $reviews = Review::where('active', 0)->inRandomOrder()->get();
-        $wisata = Wisata::inRandomOrder()->where('status', 0)->paginate(3);
+        $wisata = Wisata::select(['id', 'nama_wisata', 'kategori', 'deskripsi'])->inRandomOrder()->where('status', 0)->paginate(3);
         $wisata2 = Wisata::count();
-        $cerita = CeritaRakyat::inRandomOrder()->paginate(3);
-        $produk = Produk::inRandomOrder()->where('status', 0)->paginate(4);
+        $cerita = CeritaRakyat::select(['id', 'judul', 'deskripsi', 'gambar_cerita'])->inRandomOrder()->paginate(3);
+        $produk = Produk::select(['id', 'nama_produk', 'kategori', 'deskripsi', 'harga'])->inRandomOrder()->where('status', 0)->paginate(4);
         $galeri = Galeri::inRandomOrder()->get();
         $informasi = Informasi::where('status', 0)->get();
         return view('pages.user.home', [
@@ -47,7 +47,7 @@ class HomeController extends Controller
 
     public function wisata()
     {
-        $wisata = Wisata::paginate(6);
+        $wisata = Wisata::with('gambar_wisata')->select(['id', 'nama_wisata', 'kategori', 'deskripsi', 'status'])->paginate(6);
         return view('pages.user.wisata', [
             'wisatas' => $wisata
         ]);
@@ -55,7 +55,7 @@ class HomeController extends Controller
 
     public function produk()
     {
-        $produk = Produk::paginate(6);
+        $produk = Produk::with('gambar_produk')->select(['id', 'nama_produk', 'kategori', 'deskripsi', 'harga', 'stok'])->paginate(6);
         return view('pages.user.produk', [
             'produks' => $produk
         ]);
@@ -63,7 +63,7 @@ class HomeController extends Controller
 
     public function cerita_rakyat()
     {
-        $cerita = CeritaRakyat::paginate(6);
+        $cerita = CeritaRakyat::select(['id', 'judul', 'deskripsi', 'gambar_cerita'])->paginate(6);
         return view('pages.user.cerita-rakyat', [
             'ceritas' => $cerita
         ]);
@@ -88,8 +88,8 @@ class HomeController extends Controller
 
     public function transaksi()
     {
-        $wisata = WisataTransaksi::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
-        $produk = ProdukTransaksi::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $wisata = WisataTransaksi::with(['user', 'wisata'])->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $produk = ProdukTransaksi::with(['produk', 'kelurahan', 'kecamatan', 'kota', 'provinsi', 'user'])->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
 
         return view('pages.user.transaksi', [
             'wisatas' => $wisata, 'produks' => $produk
