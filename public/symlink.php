@@ -1,6 +1,6 @@
 <?php
 
-$targetFolder = __DIR__.'/../laravel/storage/app/public';
+$targetFolder = __DIR__.'/../storage/app/public';
 $linkFolder = __DIR__.'/public/storage/';
 symlink($targetFolder, $linkFolder);
 
