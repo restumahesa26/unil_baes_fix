@@ -1,7 +1,7 @@
 <?php
 
-$targetFolder = __DIR__.'/../storage/app/public';
-$linkFolder = __DIR__.'/public/storage/';
+$targetFolder = __DIR__.'/../laravel/storage/app/public';
+$linkFolder = __DIR__.'/storage';
 symlink($targetFolder, $linkFolder);
 
-echo 'Symlink process succesfully';
+echo 'Symlink process succesfully completed';
