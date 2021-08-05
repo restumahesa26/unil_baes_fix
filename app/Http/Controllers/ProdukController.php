@@ -54,7 +54,7 @@ class ProdukController extends Controller
                     $extension = $value->extension();
                     $imageNames = uniqid('img_', microtime()) . '.' . $extension;
                     Storage::putFileAs('public/images/gambar-produk', $value, $imageNames);
-                    $thumbnailpath = public_path('storage/images/gambar-produk/' . $imageNames);
+                    $thumbnailpath = storage_path('app/public/images/gambar-produk/' . $imageNames);
                     $img = Image::make($thumbnailpath)->resize(600, 600)->save($thumbnailpath);
                     $data[] = $imageNames;
                 }
@@ -131,7 +131,7 @@ class ProdukController extends Controller
                     $extension = $value->extension();
                     $imageNames = uniqid('img_', microtime()) . '.' . $extension;
                     Storage::putFileAs('public/images/gambar-produk', $value, $imageNames);
-                    $thumbnailpath = public_path('storage/images/gambar-produk/' . $imageNames);
+                    $thumbnailpath = storage_path('app/public/images/gambar-produk/' . $imageNames);
                     $img = Image::make($thumbnailpath)->resize(600, 600)->save($thumbnailpath);
                     $data[] = $imageNames;
                 }

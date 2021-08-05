@@ -161,7 +161,7 @@ class TransaksiController extends Controller
         $extension = $value->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/images/bukti-bayar-tiket', $value, $imageNames);
-        $thumbnailpath = public_path('storage/images/bukti-bayar-tiket/' . $imageNames);
+        $thumbnailpath = storage_path('app/public/images/bukti-bayar-tiket/' . $imageNames);
         $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
         $item = WisataTransaksi::findOrFail($id);
@@ -224,7 +224,7 @@ class TransaksiController extends Controller
         $extension = $value->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/images/bukti-bayar-produk', $value, $imageNames);
-        $thumbnailpath = public_path('storage/images/bukti-bayar-produk/' . $imageNames);
+        $thumbnailpath = storage_path('app/public/images/bukti-bayar-produk/' . $imageNames);
         $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
         $item = ProdukTransaksi::findOrFail($id);
@@ -253,7 +253,7 @@ class TransaksiController extends Controller
         $extension = $value->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/images/bukti-bayar-ongkos-kirim', $value, $imageNames);
-        $thumbnailpath = public_path('storage/images/bukti-bayar-ongkos-kirim/' . $imageNames);
+        $thumbnailpath = storage_path('app/public/images/bukti-bayar-ongkos-kirim/' . $imageNames);
         $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
         $item = ProdukTransaksi::findOrFail($id);

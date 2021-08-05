@@ -46,7 +46,7 @@ class CeritaRakyatController extends Controller
             $extension = $value->extension();
             $imageNames = uniqid('img_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/images/gambar-cerita', $value, $imageNames);
-            $thumbnailpath = public_path('storage/images/gambar-cerita/' . $imageNames);
+            $thumbnailpath = storage_path('app/public/images/gambar-cerita/' . $imageNames);
             $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
 
             $item = new CeritaRakyat();
@@ -103,7 +103,7 @@ class CeritaRakyatController extends Controller
             $extension = $value->extension();
             $imageNames = uniqid('img_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/images/gambar-cerita', $value, $imageNames);
-            $thumbnailpath = public_path('storage/images/gambar-cerita/' . $imageNames);
+            $thumbnailpath = storage_path('app/public/images/gambar-cerita/' . $imageNames);
             $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
         }
 

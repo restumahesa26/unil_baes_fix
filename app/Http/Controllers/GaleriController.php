@@ -45,7 +45,7 @@ class GaleriController extends Controller
         $extension = $value->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         Storage::putFileAs('public/images/galeri', $value, $imageNames);
-        $thumbnailpath = public_path('storage/images/galeri/' . $imageNames);
+        $thumbnailpath = storage_path('app/public/images/galeri/' . $imageNames);
         $img = Image::make($thumbnailpath)->resize(800, 600)->save($thumbnailpath);
 
         $item = new Galeri();
@@ -98,7 +98,7 @@ class GaleriController extends Controller
             $extension = $value->extension();
             $imageNames = uniqid('img_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/images/galeri', $value, $imageNames);
-            $thumbnailpath = public_path('storage/images/galeri/' . $imageNames);
+            $thumbnailpath = storage_path('app/public/images/galeri/' . $imageNames);
             $img = Image::make($thumbnailpath)->resize(800, 600)->save($thumbnailpath);
 
             $filename  = ('public/images/galeri/').$item->image_url;
