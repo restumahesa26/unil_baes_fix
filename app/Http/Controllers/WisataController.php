@@ -60,8 +60,8 @@ class WisataController extends Controller
                         $extension = $value->extension();
                         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
                         Storage::putFileAs('public/images/gambar-wisata', $value, $imageNames);
-                        $thumbnailpath = public_path('storage/images/gambar-wisata/' . $imageNames);
-                        $img = Image::make($thumbnailpath)->resize(600, 400)->save($thumbnailpath);
+                        // $thumbnailpath = public_path('storage/images/gambar-wisata/' . $imageNames);
+                        $img = Image::make(public_path('storage/images/gambar-wisata/' . $imageNames))->resize(600, 400)->save(public_path('storage/images/gambar-wisata/' . $imageNames));
                         $data[] = $imageNames;
                     }
 
